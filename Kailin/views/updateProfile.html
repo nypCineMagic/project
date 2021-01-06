@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <title>Update Profile Page</title>
+        <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="./index.html">CineMagic</a></h1>
+    </header>
+    <br/>
+    <table>
+        <tr>
+            <th><a href="./searchMovie.html">Search Movie</a></th>
+            <th><a href="./viewProfile.html">View Profile</a></th>
+            <th><a href="./movieCart.html">Movie Cart</a></th>
+            <th><a href="./logOut.html">Log Out</a></th>
+        </tr>
+    </table>
+    <br/>
+    <h2><a href="/update?id=${user.id}">Update ${user.firstName} Profile</a></h2>
+    <form onsubmit="return searchMovie();">
+    </form>
+    <table>
+        <tr>
+            <th><a href="./faq.html">FAQs / Enquiry</a></th>
+            <th><a href="./reviews.html">Movie Reviews</a></th>
+        </tr>
+    </table>
+    <script src='/js/jquery.min.js'></script>
+    <script src="/js/updateProfile.js"></script>
+</body>
+
+</html>
