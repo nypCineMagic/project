@@ -148,11 +148,11 @@ var routes = function () {
 
     router.post('/register', function (req, res) {
         var data = req.body;
-        db.addOrganizer(data.name,data.username, data.password, data.company, function (err, organizer) {
+        db.addUser(data.name, data.password, data.email, data.number, data.address, data.postalCode, function (err, user) {
             if (err) {
-                res.status(500).send("Unable to register a new organizer");
+                res.status(500).send("Unable to register a new user");
             } else {
-                res.status(200).send("Organizer has been registered!");
+                res.status(200).send("User has been registered!");
             }
         })
     })

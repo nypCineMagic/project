@@ -94,14 +94,16 @@ var database = {
     deleteEvent: function (id, callback) {
         eventModel.findByIdAndDelete(id, callback);
     },
-    addOrganizer: function (n, un, p, c, callback) {
-        var newOrganizer = new organizerModel({
+    addUser: function (n, p, e, n, a, pc, callback) {
+        var newUser = new userModel({
             name: n,
-            username: un,
             password: p,
-            company: c
+            email: e,
+            number: n,
+            address: a,
+            postalCode: pc
         });
-        newOrganizer.save(callback);
+        newUser.save(callback);
     },
     login: function (u, p, callback) {
         organizerModel.findOne({ username: u, password: p }, callback);

@@ -45,7 +45,7 @@ function login() {
 
 function register() {
     // get all data
-    var newOrganizer = {
+    var newUser = {
         name: $("#name").val(),
         email: $('#email').val(),
         address: $('#address').val(),
@@ -56,7 +56,7 @@ function register() {
     $.ajax({
         url: "/register",
         method: "post",
-        data: newOrganizer
+        data: newUser
     })
     .done(function(data){
         $(".statusMessage").text(data);
