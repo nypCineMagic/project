@@ -94,9 +94,9 @@ var database = {
     deleteEvent: function (id, callback) {
         eventModel.findByIdAndDelete(id, callback);
     },
-    addUser: function (n, p, e, n, a, pc, callback) {
+    addUser: function (na, p, e, n, a, pc, callback) {
         var newUser = new userModel({
-            name: n,
+            name: na,
             password: p,
             email: e,
             number: n,
