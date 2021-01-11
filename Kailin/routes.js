@@ -103,6 +103,33 @@ var routes = function () {
                 }
             });
     })
+    //update user
+    router.put('/users', function (req, res) {
+        var data = req.body;
+        db.updateUser(data.id, data.name, data.email, data.number, data.password, data.address, data.postalCode,
+            function (err, user) {
+                if (err) {
+                    res.status(500).send("Unable to update the profile");
+                } else {
+                    if (user == null) {
+                        res.status(200).send("No Profile is updated");
+                    } else {
+                        res.status(200).send("Profile has been updated successfully");
+                    }
+                }
+            });
+    })
+    //get user
+    router.get('/user/:id', function (req, res) {
+        var id = req.params.id;
+        db.getUser(id, function (err, user) {
+            if (err) {
+                res.status(500).send("Unable to find the Profile with this id");
+            } else {
+                res.status(200).send(user);
+            }
+        })
+    })
 
     router.delete('/events/:id', function (req, res) {
         var id = req.params.id;
