@@ -47,11 +47,11 @@ function register() {
     // get all data
     var newUser = {
         name: $("#name").val(),
+        password: $("#password").val(),
         email: $('#email').val(),
         address: $('#address').val(),
         number: $('#number').val(),
         postalCode: $("#postalCode").val(),
-        password: $("#password").val()
     }
     $.ajax({
         url: "/register",

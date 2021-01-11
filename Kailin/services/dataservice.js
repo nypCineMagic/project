@@ -32,7 +32,7 @@ var database = {
                     email: String,
                     number: String,
                     address: String,
-                    postalCode: Number
+                    postalCode: String
                 });
 
                 var connection = mongoose.connection;
