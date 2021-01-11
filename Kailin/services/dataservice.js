@@ -1,3 +1,4 @@
+const e = require('express');
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var movieSchema = {};
@@ -77,6 +78,18 @@ var database = {
             }
         };
         eventModel.findByIdAndUpdate(id, updatedEvent, callback);
+    },
+    updateProfile: function (id, n, e, num, pass, a, pc, callback) {
+        var updatedProfile = {
+            name: n,
+            email: e,
+            number: num,
+            password: pass,
+            address: a,
+            postalCode: pc
+
+        };
+        userModel.findByIdAndUpdate(id, updatedProfile, callback);
     },
     deleteEvent: function (id, callback) {
         eventModel.findByIdAndDelete(id, callback);
