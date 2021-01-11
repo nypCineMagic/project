@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
-var eventSchema = {};
-var organizerSchema = {};
-var eventModel, organizerModel;
+var movieSchema = {};
+var userSchema = {};
+var movieModel, userModel;
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -15,30 +15,28 @@ var database = {
             if (err == null) {
                 console.log("Connected to Mongo DB");
                 //initialize values
-                eventSchema = schema({
-                    name: String,
-                    description: String,
-                    start: {
-                        date: String,
-                        time: String
-                    },
-                    end: {
-                        date: String,
-                        time: String
-                    }
+                movieSchema = schema({
+                    title: String,
+                    genre: String,
+                    language: String,
+                    runningTime: String,
+                    Director: String,
+                    Cast: String,
+                    description: String
                 });
 
-                organizerSchema = schema({
+                userSchema = schema({
                     name: String,
-                    username: String,
                     password: String,
-                    company: String,
-                    token: String
+                    email: String,
+                    number: String,
+                    address: String,
+                    postalCode: Number
                 });
 
                 var connection = mongoose.connection;
-                eventModel = connection.model('events', eventSchema);
-                organizerModel = connection.model('organizers', organizerSchema);
+                movieModel = connection.model('movies', movieSchema);
+                userModel = connection.model('users', userSchema);
             } else {
                 console.log("Error connecting to Mongo DB");
             }
