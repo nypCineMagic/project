@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 function login() {
     var credentials = {
-        username: $("#username").val(),
+        email: $("#email").val(),
         password: $("#password").val()
     }
     $.ajax({
@@ -47,8 +47,10 @@ function register() {
     // get all data
     var newOrganizer = {
         name: $("#name").val(),
-        company: $("#company").val(),
-        username: $("#username").val(),
+        email: $('#email').val(),
+        address: $('#address').val(),
+        number: $('#number').val(),
+        postalCode: $("#postalCode").val(),
         password: $("#password").val()
     }
     $.ajax({
