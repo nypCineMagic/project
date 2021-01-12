@@ -1,9 +1,11 @@
 var bodyParser = require('body-parser');
 var crypto = require('crypto');
 var db = require('./services/dataservice.js');
+var movieController = require('./controllers/movieController.js');
+const {updateUser} = require('./services/dataservice.js');
 
 db.connect();
-
+//router defining db connection
 var routes = function () {
     var router = require('express').Router();
 
@@ -39,8 +41,11 @@ var routes = function () {
         res.sendFile(__dirname + "/views/index.html");
     });
 
-    router.get('/edit', function (req, res) {
-        res.sendFile(__dirname + "/views/editEvent.html");
+    router.get('/viewProfile', function (req, res) {
+        res.sendFile(__dirname + "/views/viewProfile.html");
+    });
+    router.get('/editProfile', function (req, res) {
+        res.sendFile(__dirname + "/views/editProfile.html");
     });
     router.get('/register', function (req, res) {
         res.sendFile(__dirname + "/views/register.html");
@@ -103,32 +108,69 @@ var routes = function () {
                 }
             });
     })
+    //search
+    router.post('/api/search', function (req, res) {
+        var title = req.body.title;
+        db.searchMovie(title,function(err,movie) {
+            if (err) {
+                res.status(500).send("Unable to search movie");
+            } else {
+                res.status(200).send(movie);
+            }
+        })
+
+    });
+
     //update user
-    router.put('/users', function (req, res) {
+    router.put('/user', function (req, res) {
+        console.log("update profile")
         var data = req.body;
         db.updateUser(data.id, data.name, data.email, data.number, data.password, data.address, data.postalCode,
             function (err, user) {
-                if (err) {
-                    res.status(500).send("Unable to update the profile");
-                } else {
-                    if (user == null) {
-                        res.status(200).send("No Profile is updated");
-                    } else {
-                        res.status(200).send("Profile has been updated successfully");
-                    }
-                }
+                res.end();
+                // if (err) {
+                //     res.status(500).send("Unable to update the profile");
+                // } else {
+                //     if (user == null) {
+                //         res.status(200).send("No Profile is updated");
+                //     } else {
+                //         res.status(200).send("Profile has been updated successfully");
+                //     }
+                // }
             });
     })
     //get user
-    router.get('/user/:id', function (req, res) {
-        var id = req.params.id;
-        db.getUser(id, function (err, user) {
-            if (err) {
-                res.status(500).send("Unable to find the Profile with this id");
-            } else {
-                res.status(200).send(user);
-            }
+    router.get('/user', function(req, res){
+        // var id = req.params.id;
+        db.getAllUser(function(err, user){
+            res.send(user);
         })
+    })
+
+    router.get('/user/:id', function(req, res){
+        var id = req.params.id;
+        db.getUser(id, function(err, user){
+            res.send(user);
+        })
+    })
+    // router.get('/user/:id', function (req, res) {
+    //     var id = req.params.id;
+    //     db.getUser(id, function (err, user) {
+    //         if (err) {
+    //             res.status(500).send("Unable to find the Profile with this id");
+    //         } else {
+    //             res.status(200).send(user);
+    //         }
+    //     })
+    // })
+
+    // //get user
+    // router.get('/profile', function(req, res){
+    //     res.send(profileController.getProfile());
+    // })
+    //get movie
+    router.get('/movie', function(req, res){
+        res.send(movieController.getMovie());
     })
 
     router.delete('/events/:id', function (req, res) {

@@ -1,24 +1,26 @@
 $(document).ready(function () {
     $.ajax({
-        url: "/users",
+        url: "/user",
         method: "get"
     })
         .done(
             function (data) {
-                data.forEach(function(event) {
-                    $(".users").append(`
+                data.forEach(function(user) {// 
+                    $(".user").append(`
                         <article>
-                        <h2><a href="/edit?id=${user._id}">${user.name}</a></h2>
                         <div>
+                        <h2>${user.name}</h2>
                             Email Address: ${user.email}<br>
                             Mobile Number: ${user.number}<br>
                             Password: ${user.password}<br>
                             Home Address: ${user.address}<br>
                             Postal Code: ${user.postalCode}<br>
                         </div>
+                        <br>
+                        <a href="/editProfile?id=${user._id}">Click to Edit Profile</a>
                         </article>
                     `);
-                });
+                })
             }
         )
         .fail(
@@ -27,9 +29,9 @@ $(document).ready(function () {
             }
         )
 
-    $(".editProfile").click(function () {
-        $(".editUserProfile").show();
-    })
+    // $(".Profile").click(function () {
+    //     $(".editProfile").show();
+    // })
 })
 
 // function addEvent() {

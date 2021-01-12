@@ -9,6 +9,7 @@ mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
+mongoose.set('debug',true);
 
 var database = {
     connect: function () {
@@ -79,8 +80,16 @@ var database = {
         };
         eventModel.findByIdAndUpdate(id, updatedEvent, callback);
     },
-    updateProfile: function (id, n, e, num, pass, a, pc, callback) {
-        var updatedProfile = {
+    //getuserprofile
+    getAllUser: function(callback){
+        userModel.find({}, callback);
+    },
+    getUser: function(id, callback){
+        userModel.findById(id, callback);
+    },
+    //update profile by id
+    updateUser: function (id, n, e, num, pass, a, pc, callback) {
+        var updatedUser = {
             name: n,
             email: e,
             number: num,
@@ -89,7 +98,11 @@ var database = {
             postalCode: pc
 
         };
-        userModel.findByIdAndUpdate(id, updatedProfile, callback);
+        userModel.findByIdAndUpdate(id, updatedUser, callback);
+    },
+    // search movie
+    searchMovie: function(t, callback){
+        movieModel.find({title: new RegExp(t,'i')}, callback);
     },
     deleteEvent: function (id, callback) {
         eventModel.findByIdAndDelete(id, callback);

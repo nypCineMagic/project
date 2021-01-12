@@ -3,12 +3,12 @@
 
 <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Edit Profile Page</title>
         <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-        <h1>Edit Profile</h1>
+        <h1>CineMagic</h1>
         <header>
                 <nav>
                         <li><a href="/">Home Page</a></li>
@@ -18,8 +18,11 @@
                         <li><a href="#" class="logoutLink">Logout</a></li>
                 </nav>
         </header>
+        <h3>Edit Profile</h3>
         <section>
-                <form onsubmit="return editProfile();">
+                <form onsubmit="return editUser();">
+                    <!-- make sure data valid before 
+                        submitting thats why got editProfile.js -->
                         <label for="name">Name:</label>
                         <input type="text" id="name" name="name">
                         <br>
@@ -37,9 +40,10 @@
                         <br>
                         <label for="postalCode">Postal Code:</label>
                         <input type="text" id="postalCode" name="postalCode">
-                        <br>
+                        <br><br>
                         <button type="submit">Save Changes to Profile</button>
                 </form>
+                <div class="statusMessage"></div>
         </section>
         <br>
         <script src='/js/jquery.min.js'></script>
