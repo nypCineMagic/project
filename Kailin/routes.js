@@ -54,6 +54,16 @@ var routes = function () {
         res.sendFile(__dirname + "/views/login.html");
     });
 
+    router.get('/faq', function (req, res) {
+        res.sendFile(__dirname + "/views/faq.html");
+    });
+    router.get('/recommend', function (req, res) {
+        res.sendFile(__dirname + "/views/recommend.html");
+    });
+    router.get('/recommendMovieList', function (req, res) {
+        res.send(movieController.getAllRecommendMovies());
+    })
+
     router.get('/css/*', function(req, res)  {
         res.sendFile(__dirname+"/views/"+req.originalUrl);
     });
@@ -234,6 +244,12 @@ var routes = function () {
                 }
             })
         }
+    })
+
+    router.get('/movies', function (req, res) {
+        db.getAllRecommendMovies(function (err, movies) {
+            res.send(movies);
+        })
     })
 
     return router;
