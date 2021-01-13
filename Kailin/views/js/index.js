@@ -28,6 +28,16 @@ $(document).ready(function () {
     $(".addEvent").click(function () {
         $(".addNewEvent").show();
     })
+
+    var token = sessionStorage.authToken;
+
+    if(token==undefined) {
+        $(".protectedSection").hide();
+        $(".unprotectedSection").show();
+    } else {
+        $(".protectedSection").show();
+        $(".unprotectedSection").hide();
+    }
 })
 
 function addEvent() {

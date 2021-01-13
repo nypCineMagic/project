@@ -1,5 +1,15 @@
 $(document).ready(function(){
 
+    var token = sessionStorage.authToken;
+
+    if(token==undefined) {
+        $(".protectedSection").hide();
+        $(".unprotectedSection").show();
+    } else {
+        $(".protectedSection").show();
+        $(".unprotectedSection").hide();
+    }
+
     // handles the clicking of the logout function
     $(".logoutLink").click(function(e){
         //prevents the browser from navigating to "#", as defined by the <a href> tag
@@ -21,6 +31,8 @@ $(document).ready(function(){
             console.log(err.responseText);
         })
     })
+    
+    
 });
 
 function login() {
