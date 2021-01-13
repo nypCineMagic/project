@@ -201,16 +201,16 @@ var routes = function () {
 
     router.post('/login', function (req, res) {
         var data = req.body;
-        db.login(data.username, data.password, function (err, organizer) {
+        db.login(data.email, data.password, function (err, user) {
             if (err) {
                 res.status(401).send("Login unsucessful. Please try again later");
             } else {
-                if (organizer == null) {
+                if (user == null) {
                     res.status(401).send("Login unsucessful. Please try again later");
                 } else {
-                    var strToHash = organizer.username + Date.now();
+                    var strToHash = user.name + Date.now();
                     var token = crypto.createHash('md5').update(strToHash).digest('hex');
-                    db.updateToken(organizer._id, token, function (err, organizer) {
+                    db.updateToken(user._id, token, function (err, user) {
                         res.status(200).json({ 'message': 'Login successful.', 'token': token });
                     });
                 }

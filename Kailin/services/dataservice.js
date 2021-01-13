@@ -33,7 +33,8 @@ var database = {
                     email: String,
                     number: String,
                     address: String,
-                    postalCode: String
+                    postalCode: String,
+                    token: String
                 });
 
                 var connection = mongoose.connection;
@@ -118,17 +119,17 @@ var database = {
         });
         newUser.save(callback);
     },
-    login: function (u, p, callback) {
-        organizerModel.findOne({ username: u, password: p }, callback);
+    login: function (e, p, callback) {
+        userModel.findOne({ email: e, password: p }, callback);
     },
     updateToken: function (id, token, callback) {
-        organizerModel.findByIdAndUpdate(id, { token: token }, callback);
+        userModel.findByIdAndUpdate(id, { token: token }, callback);
     },
     checkToken: function(token,callback) {
-        organizerModel.findOne({token:token},callback);
+        userModel.findOne({token:token},callback);
     },
     removeToken: function(id,callback) {
-        organizerModel.findByIdAndUpdate(id, {$unset: {token: 1}},callback);
+        userModel.findByIdAndUpdate(id, {$unset: {token: 1}},callback);
     }
 };
 
