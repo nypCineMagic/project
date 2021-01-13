@@ -36,9 +36,9 @@ function editUser() {
     };
     $.ajax(
         {
-            url: '/user',
+            // url: '/user',
             // once jianming finishes login token part, i can change codes
-            // url: '/user?token='+sessionStorage.authToken,
+            url: '/user?token='+sessionStorage.authToken
             method: 'put',
             data: user
         }
