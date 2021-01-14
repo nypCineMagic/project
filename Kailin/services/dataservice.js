@@ -45,6 +45,9 @@ var database = {
             }
         })
     },
+    getAllRMovies: function(callback){
+        movieModel.find({}, callback);
+    },
     // getAllEvents: function (callback) {
     //     eventModel.find({}, callback);
     // },
