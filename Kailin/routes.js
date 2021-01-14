@@ -78,11 +78,15 @@ var routes = function () {
         res.sendFile(__dirname+"/views/"+req.originalUrl);
     });
 
-    //search
-    router.post('/search', function (req, res) {
+    //search movie by title
+    router.get('/searchMovieByTitle/:title', function (req, res) {
         var title = req.body.title;
-        db.searchMovie(title,function(err,movie) {
-           res.end(); 
+        db.searchMovieByTitle(title,function(err,movie) {
+            if (err) {
+                res.status(500).send("unable to find movie with this title");
+            } else {
+                res.status(200).send(movie);
+            }
         });
 
     });

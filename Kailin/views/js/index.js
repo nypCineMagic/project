@@ -40,29 +40,29 @@ $(document).ready(function () {
     }
 })
 
-function addEvent() {
-    var newEvent = {
-        name: $("#name").val(),
-        description: $("#description").val(),
-        startDate: $("#startDate").val(),
-        startTime: $("#startTime").val(),
-        endDate: $("#endDate").val(),
-        endTime: $("#endTime").val()
-    };
+// function addEvent() {
+//     var newEvent = {
+//         name: $("#name").val(),
+//         description: $("#description").val(),
+//         startDate: $("#startDate").val(),
+//         startTime: $("#startTime").val(),
+//         endDate: $("#endDate").val(),
+//         endTime: $("#endTime").val()
+//     };
 
-    $.ajax({
-        url:"/events?token="+sessionStorage.authToken,
-        method:"POST",
-        data: newEvent
-    })
-    .done(function(data){
-        $(".statusMessage").text(data);
-        setTimeout(function(){
-            location.reload();
-        },3000);
-    })
-    .fail(function(err){
-        $(".statusMessage").text("Unable to add new event");
-    })
-    return false;
-}
+//     $.ajax({
+//         url:"/events?token="+sessionStorage.authToken,
+//         method:"POST",
+//         data: newEvent
+//     })
+//     .done(function(data){
+//         $(".statusMessage").text(data);
+//         setTimeout(function(){
+//             location.reload();
+//         },3000);
+//     })
+//     .fail(function(err){
+//         $(".statusMessage").text("Unable to add new event");
+//     })
+//     return false;
+// }
