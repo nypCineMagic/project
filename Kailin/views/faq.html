@@ -1,24 +1,60 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-	<meta charset="utf-8" />
     <title>Frequently Asked Questions</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
-    <h1>Frequently Asked Questions</h1>
+    <h1>CineMagic</h1>
+    <style>
+        .protectedSection,
+        .unprotectedSection {
+            display: none;
+        }
+    </style>
+    <header>
+        <nav>
+            <li>
+                <section class=""><a href="/">Home Page</a></section>
+            </li>
+            <li>
+                <section class="protectedSection"><a href="/viewProfile">View Profile</a></section>
+            </li>
+            <li>
+                <section class="unprotectedSection"><a href="/login">Login</a></section>
+            </li>
+            <li>
+                <section class="unprotectedSection"><a href="/register">Register User</a></section>
+            </li>
+            <li>
+                <section class="protectedSection"><a href="#" class="logoutLink">Logout</a></section>
+            </li>
+        </nav>
+    </header>
+    <h2>Frequently Asked Questions</h2>
+    <hr>
+    <section>
+        <h4>What time does your box office open and close?</h4>
+        <p>The box office opens at 10am in the morning or half an hour before the first public screening (whichever is
+            earlier).</p>
 
-        <h3>What time does your box office open and close?</h3>
-			<p>The box office opens at 10am in the morning or half an hour before the first public screening (whichever is earlier).</p>
+        <h4>Can I purchase movie tickets to any movie theatre online?</h4>
+        <p>Yes.</p>
 
-        <h3>Can I purchase movie tickets to any movie theatre online?</h3>
-            <p>Yes.</p>
+        <h4>How can I purchase movie vouchers?</h4>
+        <p>You can purchase gift vouchers at any box office.</p>
 
-        <h3>How can I purchase movie vouchers?</h3>
-            <p>You can purchase gift vouchers at any box office.</p>
-
-        <h3>I think I might have lost an item at a theatre, how can I report it?</h3>
-            <p>For assistance with lost and found items, kindly use the feedback option here to drop us an email and we will get back to you soonest.</p>
-            
+        <h4>I think I might have lost an item at a theatre, how can I report it?</h4>
+        <p>For assistance with lost and found items, kindly use the feedback option here to drop us an email and we will
+            get back to you soonest.</p>
+    </section>
+    <hr>
+    <section class="unprotectedSection"><a href="/faq">FAQs & Enquiries</a></section>
 </body>
+<script src='/js/jquery.min.js'></script>
+<script src='/js/auth.js'></script>
+<script src='/js/index.js'></script>
+
 </html>

@@ -7,6 +7,11 @@
 
 <body>
     <h1>CineMagic</h1>
+    <style>
+        .protectedSection,.unprotectedSection {
+            display: none;
+        }
+    </style>
     <header>
         <nav>
             <li><a href="/">Home Page</a></li>
@@ -33,6 +38,8 @@
         </form>
     </section>
     <div class="statusMessage"></div>
+    <hr>
+    <section class="unprotectedSection"><a href="/faq">FAQs & Enquiries</a></section>
     <script src='/js/jquery.min.js'></script>
     <script src="/js/auth.js"></script>
 </body>

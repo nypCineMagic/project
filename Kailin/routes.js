@@ -44,6 +44,9 @@ var routes = function () {
     router.get('/viewProfile', function (req, res) {
         res.sendFile(__dirname + "/views/viewProfile.html");
     });
+    router.get('/faq', function (req, res) {
+        res.sendFile(__dirname + "/views/faq.html");
+    });
     router.get('/editProfile', function (req, res) {
         res.sendFile(__dirname + "/views/editProfile.html");
     });
@@ -72,52 +75,52 @@ var routes = function () {
         res.sendFile(__dirname+"/views/"+req.originalUrl);
     });
 
-    router.get('/events', function (req, res) {
-        db.getAllEvents(function (err, events) {
-            if (err) {
-                res.status(500).send("Unable to get all events.");
-            } else {
-                res.status(200).send(events);
-            }
-        })
-    })
-    router.get('/events/:id', function (req, res) {
-        var id = req.params.id;
-        db.getEvent(id, function (err, event) {
-            if (err) {
-                res.status(500).send("Unable to find an event with this id");
-            } else {
-                res.status(200).send(event);
-            }
-        })
-    })
-    router.post('/events', function (req, res) {
-        var data = req.body;
-        db.addEvent(data.name, data.description, data.startDate, data.startTime, data.endDate, data.endTime,
-            function (err, event) {
-                if (err) {
-                    res.status(500).send("Unable to add a new event");
-                } else {
-                    res.status(200).send("Event has been successfully added!");
-                }
-            })
-    });
+    // router.get('/events', function (req, res) {
+    //     db.getAllEvents(function (err, events) {
+    //         if (err) {
+    //             res.status(500).send("Unable to get all events.");
+    //         } else {
+    //             res.status(200).send(events);
+    //         }
+    //     })
+    // })
+    // router.get('/events/:id', function (req, res) {
+    //     var id = req.params.id;
+    //     db.getEvent(id, function (err, event) {
+    //         if (err) {
+    //             res.status(500).send("Unable to find an event with this id");
+    //         } else {
+    //             res.status(200).send(event);
+    //         }
+    //     })
+    // })
+    // router.post('/events', function (req, res) {
+    //     var data = req.body;
+    //     db.addEvent(data.name, data.description, data.startDate, data.startTime, data.endDate, data.endTime,
+    //         function (err, event) {
+    //             if (err) {
+    //                 res.status(500).send("Unable to add a new event");
+    //             } else {
+    //                 res.status(200).send("Event has been successfully added!");
+    //             }
+    //         })
+    // });
 
-    router.put('/events', function (req, res) {
-        var data = req.body;
-        db.updateEvent(data.id, data.name, data.description, data.startDate, data.startTime, data.endDate, data.endTime,
-            function (err, event) {
-                if (err) {
-                    res.status(500).send("Unable to update the event");
-                } else {
-                    if (event == null) {
-                        res.status(200).send("No event is updated");
-                    } else {
-                        res.status(200).send("Event has been updated successfully");
-                    }
-                }
-            });
-    })
+    // router.put('/events', function (req, res) {
+    //     var data = req.body;
+    //     db.updateEvent(data.id, data.name, data.description, data.startDate, data.startTime, data.endDate, data.endTime,
+    //         function (err, event) {
+    //             if (err) {
+    //                 res.status(500).send("Unable to update the event");
+    //             } else {
+    //                 if (event == null) {
+    //                     res.status(200).send("No event is updated");
+    //                 } else {
+    //                     res.status(200).send("Event has been updated successfully");
+    //                 }
+    //             }
+    //         });
+    // })
     //search
     router.post('/api/search', function (req, res) {
         var title = req.body.title;
@@ -183,20 +186,20 @@ var routes = function () {
         res.send(movieController.getMovie());
     })
 
-    router.delete('/events/:id', function (req, res) {
-        var id = req.params.id;
-        db.deleteEvent(id, function (err, event) {
-            if (err) {
-                res.status(500).send("Unable to delete the event");
-            } else {
-                if (event == null) {
-                    res.status(200).send("No event is deleted");
-                } else {
-                    res.status(200).send("Event has been deleted successfully");
-                }
-            }
-        });
-    })
+    // router.delete('/events/:id', function (req, res) {
+    //     var id = req.params.id;
+    //     db.deleteEvent(id, function (err, event) {
+    //         if (err) {
+    //             res.status(500).send("Unable to delete the event");
+    //         } else {
+    //             if (event == null) {
+    //                 res.status(200).send("No event is deleted");
+    //             } else {
+    //                 res.status(200).send("Event has been deleted successfully");
+    //             }
+    //         }
+    //     });
+    // })
 
     router.post('/register', function (req, res) {
         var data = req.body;

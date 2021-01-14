@@ -45,42 +45,42 @@ var database = {
             }
         })
     },
-    getAllEvents: function (callback) {
-        eventModel.find({}, callback);
-    },
-    addEvent: function (n, d, sd, st, ed, et, callback) {
-        var newEvent = new eventModel({
-            name: n,
-            description: d,
-            start: {
-                date: sd,
-                time: st
-            },
-            end: {
-                date: ed,
-                time: et
-            }
-        });
-        newEvent.save(callback);
-    },
-    getEvent: function (id, callback) {
-        eventModel.findById(id, callback);
-    },
-    updateEvent: function (id, n, d, sd, st, ed, et, callback) {
-        var updatedEvent = {
-            name: n,
-            description: d,
-            start: {
-                date: sd,
-                time: st
-            },
-            end: {
-                date: ed,
-                time: et
-            }
-        };
-        eventModel.findByIdAndUpdate(id, updatedEvent, callback);
-    },
+    // getAllEvents: function (callback) {
+    //     eventModel.find({}, callback);
+    // },
+    // addEvent: function (n, d, sd, st, ed, et, callback) {
+    //     var newEvent = new eventModel({
+    //         name: n,
+    //         description: d,
+    //         start: {
+    //             date: sd,
+    //             time: st
+    //         },
+    //         end: {
+    //             date: ed,
+    //             time: et
+    //         }
+    //     });
+    //     newEvent.save(callback);
+    // },
+    // getEvent: function (id, callback) {
+    //     eventModel.findById(id, callback);
+    // },
+    // updateEvent: function (id, n, d, sd, st, ed, et, callback) {
+    //     var updatedEvent = {
+    //         name: n,
+    //         description: d,
+    //         start: {
+    //             date: sd,
+    //             time: st
+    //         },
+    //         end: {
+    //             date: ed,
+    //             time: et
+    //         }
+    //     };
+    //     eventModel.findByIdAndUpdate(id, updatedEvent, callback);
+    // },
     //getuserprofile
     getAllUser: function(callback){
         userModel.find({}, callback);
@@ -105,9 +105,9 @@ var database = {
     searchMovie: function(t, callback){
         movieModel.find({title: new RegExp(t,'i')}, callback);
     },
-    deleteEvent: function (id, callback) {
-        eventModel.findByIdAndDelete(id, callback);
-    },
+    // deleteEvent: function (id, callback) {
+    //     eventModel.findByIdAndDelete(id, callback);
+    // },
     addUser: function (na, p, e, n, a, pc, callback) {
         var newUser = new userModel({
             name: na,
