@@ -78,62 +78,12 @@ var routes = function () {
         res.sendFile(__dirname+"/views/"+req.originalUrl);
     });
 
-    // router.get('/events', function (req, res) {
-    //     db.getAllEvents(function (err, events) {
-    //         if (err) {
-    //             res.status(500).send("Unable to get all events.");
-    //         } else {
-    //             res.status(200).send(events);
-    //         }
-    //     })
-    // })
-    // router.get('/events/:id', function (req, res) {
-    //     var id = req.params.id;
-    //     db.getEvent(id, function (err, event) {
-    //         if (err) {
-    //             res.status(500).send("Unable to find an event with this id");
-    //         } else {
-    //             res.status(200).send(event);
-    //         }
-    //     })
-    // })
-    // router.post('/events', function (req, res) {
-    //     var data = req.body;
-    //     db.addEvent(data.name, data.description, data.startDate, data.startTime, data.endDate, data.endTime,
-    //         function (err, event) {
-    //             if (err) {
-    //                 res.status(500).send("Unable to add a new event");
-    //             } else {
-    //                 res.status(200).send("Event has been successfully added!");
-    //             }
-    //         })
-    // });
-
-    // router.put('/events', function (req, res) {
-    //     var data = req.body;
-    //     db.updateEvent(data.id, data.name, data.description, data.startDate, data.startTime, data.endDate, data.endTime,
-    //         function (err, event) {
-    //             if (err) {
-    //                 res.status(500).send("Unable to update the event");
-    //             } else {
-    //                 if (event == null) {
-    //                     res.status(200).send("No event is updated");
-    //                 } else {
-    //                     res.status(200).send("Event has been updated successfully");
-    //                 }
-    //             }
-    //         });
-    // })
     //search
-    router.post('/api/search', function (req, res) {
+    router.post('/search', function (req, res) {
         var title = req.body.title;
         db.searchMovie(title,function(err,movie) {
-            if (err) {
-                res.status(500).send("Unable to search movie");
-            } else {
-                res.status(200).send(movie);
-            }
-        })
+           res.end(); 
+        });
 
     });
 
@@ -144,15 +94,6 @@ var routes = function () {
         db.updateUser(data.id, data.name, data.email, data.number, data.password, data.address, data.postalCode,
             function (err, user) {
                 res.end();
-                // if (err) {
-                //     res.status(500).send("Unable to update the profile");
-                // } else {
-                //     if (user == null) {
-                //         res.status(200).send("No Profile is updated");
-                //     } else {
-                //         res.status(200).send("Profile has been updated successfully");
-                //     }
-                // }
             });
     })
     //get user
@@ -169,41 +110,12 @@ var routes = function () {
             res.send(user);
         })
     })
-    // router.get('/user/:id', function (req, res) {
-    //     var id = req.params.id;
-    //     db.getUser(id, function (err, user) {
-    //         if (err) {
-    //             res.status(500).send("Unable to find the Profile with this id");
-    //         } else {
-    //             res.status(200).send(user);
-    //         }
-    //     })
-    // })
-
-    // //get user
-    // router.get('/profile', function(req, res){
-    //     res.send(profileController.getProfile());
-    // })
     //get movie
     router.get('/movie', function(req, res){
         res.send(movieController.getMovie());
     })
 
-    // router.delete('/events/:id', function (req, res) {
-    //     var id = req.params.id;
-    //     db.deleteEvent(id, function (err, event) {
-    //         if (err) {
-    //             res.status(500).send("Unable to delete the event");
-    //         } else {
-    //             if (event == null) {
-    //                 res.status(200).send("No event is deleted");
-    //             } else {
-    //                 res.status(200).send("Event has been deleted successfully");
-    //             }
-    //         }
-    //     });
-    // })
-
+    //register user
     router.post('/register', function (req, res) {
         var data = req.body;
         db.addUser(data.name, data.password, data.email, data.number, data.address, data.postalCode, function (err, user) {
@@ -215,6 +127,7 @@ var routes = function () {
         })
     })
 
+    //login user
     router.post('/login', function (req, res) {
         var data = req.body;
         db.login(data.email, data.password, function (err, user) {
@@ -235,6 +148,7 @@ var routes = function () {
         })
     })
 
+    //logout user
     router.get("/logout", function (req, res) {
         var token = req.query.token;
         if (token == undefined) {

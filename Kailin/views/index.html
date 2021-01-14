@@ -23,15 +23,19 @@
     </header>
     
     <section>
-        <input type="text" id="search" name="search">
-        <button class="searchMovie">Search</button>
+        <!-- search movie -->
+        <form onsubmit="return searchMovie;">
+            <input type="text" id="search" name="search">
+            <input type="submit" value="Search Movie">
+        </form>
     </section>
+    <hr>
     <section class="movie">
-
+        <!-- this is where u add the movie recommendation part
+        and when click on it,
+        it will go to movieDetail.html -->
     </section>
-    <section>
-        <button class="addMovie">Add Movie to Cart</button>
-    </section>
+    
     <br>
     <section class="addNewEvent">
         <form onsubmit="return addEvent();">
