@@ -23,8 +23,8 @@ var routes = function () {
             if (token == undefined) {
                 res.status(401).send("No tokens are provided. You are not allowed to perform this action.");
             } else {
-                db.checkToken(token, function (err, organizer) {
-                    if (err || organizer == null) {
+                db.checkToken(token, function (err, user) {
+                    if (err || user == null) {
                         res.status(401).send("[Invalid token] You are not allowed to perform this action.");
                     } else {
                         //means proceed on with the request.
@@ -158,11 +158,11 @@ var routes = function () {
         if (token == undefined) {
             res.status(401).send("No tokens are provided");
         } else {
-            db.checkToken(token, function (err, organizer) {
-                if (err || organizer == null) {
+            db.checkToken(token, function (err, user) {
+                if (err || user == null) {
                     res.status(401).send("Invalid token provided");
                 } else {
-                    db.removeToken(organizer._id, function (err, user) {
+                    db.removeToken(user._id, function (err, user) {
                         res.status(200).send("Logout successfully")
                     });
                 }
