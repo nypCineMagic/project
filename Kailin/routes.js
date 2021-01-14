@@ -101,17 +101,24 @@ var routes = function () {
             });
     })
     //get user
-    router.get('/user', function(req, res){
-        // var id = req.params.id;
+    router.get('/users', function(req, res){
         db.getAllUser(function(err, user){
-            res.send(user);
+            if (err) {
+                res.status(500).send("Unable to find user with this id");
+            } else {
+                res.status(200).send(user);
+            }
         })
     })
 
-    router.get('/user/:id', function(req, res){
+    router.get('/users/:id', function(req, res){
         var id = req.params.id;
         db.getUser(id, function(err, user){
-            res.send(user);
+            if (err) {
+                res.status(500).send("Unable to find user with this id");
+            } else {
+                res.status(200).send(user);
+            }
         })
     })
     //get movie
