@@ -9,7 +9,8 @@ $(document).ready(function () {
                     $(".user").append(`
                         <article>
                         <div>
-                        <h2>${user.name}</h2>
+                        <h3>Click Name to Edit Your Profile</h3>
+                        <h3><a href="/editProfile?id=${user._id}">${user.name}</a></h3>
                             Email Address: ${user.email}<br>
                             Mobile Number: ${user.number}<br>
                             Password: ${user.password}<br>
@@ -17,7 +18,7 @@ $(document).ready(function () {
                             Postal Code: ${user.postalCode}<br>
                         </div>
                         <br>
-                        <a href="/editProfile?id=${user._id}">Click to Edit Profile</a>
+                        
                         </article>
                     `);
                 })
@@ -28,35 +29,4 @@ $(document).ready(function () {
                 console.log(err.responseText);
             }
         )
-
-    // $(".Profile").click(function () {
-    //     $(".editProfile").show();
-    // })
 })
-
-// function addEvent() {
-//     var newEvent = {
-//         name: $("#name").val(),
-//         description: $("#description").val(),
-//         startDate: $("#startDate").val(),
-//         startTime: $("#startTime").val(),
-//         endDate: $("#endDate").val(),
-//         endTime: $("#endTime").val()
-//     };
-
-//     $.ajax({
-//         url:"/events?token="+sessionStorage.authToken,
-//         method:"POST",
-//         data: newEvent
-//     })
-//     .done(function(data){
-//         $(".statusMessage").text(data);
-//         setTimeout(function(){
-//             location.reload();
-//         },3000);
-//     })
-//     .fail(function(err){
-//         $(".statusMessage").text("Unable to add new event");
-//     })
-//     return false;
-// }
