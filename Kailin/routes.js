@@ -56,7 +56,7 @@ var routes = function () {
     router.get('/login', function (req, res) {
         res.sendFile(__dirname + "/views/login.html");
     });
-
+    //for faq page
     router.get('/faq', function (req, res) {
         res.sendFile(__dirname + "/views/faq.html");
     });
