@@ -16,9 +16,10 @@ var routes = function () {
     // allow people to do listing
     
     router.use(function(req,res,next){
-        //only check for token if it is PUT, DELETE methods or it is POSTING to events
+        //only check for token if it is PUT, DELETE methods or it is POSTING to movie
         if(req.method=="PUT" || req.method=="DELETE"
-            || (req.method=="POST" && req.url.includes("/events"))) {
+            || (req.method=="POST" && req.url.includes("/movie") 
+            && req.url.includes("/users") && req.url.includes("/user"))) {
             var token = req.query.token;
             if (token == undefined) {
                 res.status(401).send("No tokens are provided. You are not allowed to perform this action.");
@@ -101,7 +102,7 @@ var routes = function () {
             });
     })
     //get user
-    router.get('/users', function(req, res){
+    router.get('/user', function(req, res){
         db.getAllUser(function(err, user){
             if (err) {
                 res.status(500).send("Unable to find user with this id");
@@ -111,11 +112,12 @@ var routes = function () {
         })
     })
 
-    router.get('/users/:id', function(req, res){
+    router.get('/user/:id', function(req, res){
         var id = req.params.id;
+        console.log(id);
         db.getUser(id, function(err, user){
             if (err) {
-                res.status(500).send("Unable to find user with this id");
+                res.status(500).send("Unable to find user with this token");
             } else {
                 res.status(200).send(user);
             }
