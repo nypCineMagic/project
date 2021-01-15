@@ -4,7 +4,9 @@ var schema = mongoose.Schema;
 var movieSchema = {};
 var userSchema = {};
 var ticketSchema = {};
-var movieModel, userModel;
+var seatSchema = {};
+var cartSchema = {};
+var movieModel, userModel, cartModel, seatModel, ticketModel;
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -43,6 +45,19 @@ var database = {
                     price: String,
                     title: String,
                     description: String
+                });
+
+                seatSchema = schema({
+                    rowNo: String,
+                    reserved: Boolean,
+                    movie: String
+                });
+
+                cartSchema = schema({
+                    name: String,
+                    price: String,
+                    noOfTicket: Number,
+                    title: String,
                 });
 
                 var connection = mongoose.connection;
