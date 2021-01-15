@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <title>CheckOut Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1>CineMagic</h1>
+    <style>
+        .protectedSection,.unprotectedSection {
+            display: none;
+        }
+    </style>
+    <header>
+        <nav>
+            <li><a href="/">Home Page</a></li>
+            <li>
+                <a href="/recommend">Movie Recommendation</a>
+            </li>
+            <li><a href="/viewProfile">View Profile</a></li>
+            <li><a href="/cart">Cart</a></li>
+            <li><a href="#" class="logoutLink">Logout</a></li>
+        </nav>
+    </header>
+    <h2>Check Out </h2>
+    
+    <!-- will use ticket db -->
+    <section class="checkOut">
+        <form action="/ticket" method="post" id="checkoutForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" class="payment" required><br>
+            <label for="cardNumber">Credit Card Number:</label>
+            <input type="text" id="cardNumber" class="payment" required><br>
+            <label for="expireMonth">Expiration Month:</label>
+            <input type="text" id="expireMonth" class="payment" required><br>
+            <label for="expireYear">Expiration Month:</label>
+            <input type="text" id="expireYear" class="payment" required><br>
+            <label for="CVC">CVC:</label>
+            <input type="text" id="CVC" class="payment" required><br>
+            <button type="submit" class="buyNow">Buy Now</button>
+        </form>
+    </section>
+    
+    <hr>
+    <a href="/faq">FAQs & Enquiries</a>
+    <script src='/js/jquery.min.js'></script>
+    <script src='/js/auth.js'></script>
+    <script src='/js/index.js'></script>
+    <script src='js/viewProfile.js'></script>
+</body>
+
+</html>

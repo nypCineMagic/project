@@ -45,7 +45,7 @@ var routes = function () {
     router.get('/viewProfile', function (req, res) {
         res.sendFile(__dirname + "/views/viewProfile.html");
     });
-    router.get('/cart', function (req, res) {
+    router.get('/addCart', function (req, res) {
         res.sendFile(__dirname + "/views/cart.html");
     });
     router.get('/faq', function (req, res) {
@@ -62,6 +62,9 @@ var routes = function () {
     });
     router.get('/buyTicket', function (req, res) {
         res.sendFile(__dirname + "/views/buyTicket.html");
+    });
+    router.get('/ticket', function (req, res) {
+        res.sendFile(__dirname + "/views/ticket.html");
     });
     //for faq page
     router.get('/faq', function (req, res) {
@@ -120,6 +123,42 @@ var routes = function () {
             });
 
     });
+    router.get('/cart', function(req, res){
+        db.getAllCart(function(err, cart){
+            if (err) {
+                res.status(500).send("Unable to find Cart");
+            } else {
+                res.status(200).send(cart);
+            }
+        })
+    })
+
+    //add to cart
+    router.put('/cart', function (req, res) {
+        console.log("Added to Cart!");
+        var data = req.body;
+        db.addCart(data.id, data.name, data.title, data.date, data.time, data.price, data.noOfTicket,
+            function (err, cart) {
+                if (err) {
+                    res.status(500).send("Unable to add into cart");
+                } else {
+                    res.status(200).send("Added successfully to Cart!");
+                }
+            });
+    });
+
+    //remove from cart
+    router.delete('/cart/:id', function (req, res) {
+        var id = req.params.id;
+        db.deleteCart(id, function (err, cart) {
+            if (err) {
+                res.status(500).send("Unable to delete the ticket in cart");
+            } else {
+                if (event == null) {
+                    res.status(200).send("No ticker is deleted from cart");
+                } else {
+                    res.status(200).send("ticked deleted successfully from cart");
+                }
 
     //update user
     router.put('/user', function (req, res) {

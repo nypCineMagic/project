@@ -53,10 +53,10 @@ var database = {
                 });
 
                 cartSchema = schema({
-                    name: String,
+                    title: String,
+                    date: String,
                     price: String,
                     noOfTicket: Number,
-                    title: String,
                 });
 
                 var connection = mongoose.connection;
@@ -95,6 +95,21 @@ var database = {
             reserved: r
         };
         seatModel.findByIdAndUpdate(id, updatedSeat, callback);
+    },
+    //add to cart
+    addCart: function (t, d, ti, p, nt, callback) {
+        var newCart = new cartModel ({
+            title: t,
+            date: d,
+            time: ti,
+            price: p,
+            noOfTicket: nt,
+        });
+        newCart.save(callback);
+    },
+    //remove from cart
+    deleteCart: function (id, callback) {
+        cartModel.findByIdAndDelete(id, callback);
     },
     getAllMovies: function(callback){
         movieModel.find({}, callback);
