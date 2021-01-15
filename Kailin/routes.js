@@ -70,6 +70,19 @@ var routes = function () {
             res.send(movies);
         });
     })
+    //for ticket page
+    router.get('/tickets', function (req, res) {
+        db.getAllTickets(function (err, tickets){
+            res.send(tickets);
+        });
+    })
+
+    router.delete('/tickets/:id', function (req, res) {
+        var id = req.params.id;
+        db.deleteTicket(id, function (err, ticket) {
+            res.end();
+        });
+    })
 
     router.get('/css/*', function(req, res)  {
         res.sendFile(__dirname+"/views/"+req.originalUrl);
