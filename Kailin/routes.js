@@ -57,6 +57,9 @@ var routes = function () {
     router.get('/login', function (req, res) {
         res.sendFile(__dirname + "/views/login.html");
     });
+    router.get('/buyTicket', function (req, res) {
+        res.sendFile(__dirname + "/views/buyTicket.html");
+    });
     //for faq page
     router.get('/faq', function (req, res) {
         res.sendFile(__dirname + "/views/faq.html");

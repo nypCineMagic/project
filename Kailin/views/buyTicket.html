@@ -1,0 +1,142 @@
+<html>
+
+<head>
+    <title>CineMagic Home Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1>CineMagic</h1>
+    <style>
+        .protectedSection,.unprotectedSection {
+            display: none;
+        }
+    </style>
+    <header>
+        <nav>
+            <li><section class=""><a href="/">Home Page</a></section></li>
+            <li>
+                <section><a href="/recommend">Movie Recommendation</a></section>
+            </li>
+            <li><section class="protectedSection"><a href="/viewProfile">View Profile</a></section></li>
+            <li><section class="unprotectedSection"><a href="/login">Login</a></section></li>
+            <li><section class="unprotectedSection"><a href="/register">Register User</a></section></li>
+            <li><section class="protectedSection"><a href="#" class="logoutLink">Logout</a></section></li>
+        </nav>
+    </header>
+    <h2>Booking Movie Ticket</h2>
+    <section></section>
+    <section>
+        <button class="buyTicket">Buy Ticket</button>
+    </section>
+    <br>
+    <section class="seatViewing">
+        <form action="/buyTicket" method="POST">
+            <!-- Only have one area -->
+            <label for="location">Cinema Location :</label>
+            <select id="location" name="location">
+                <option value="Funan">Funan</option>
+                <!-- <option value="AMK">AMK Hub</option> -->
+            </select>
+            <br>
+            <label for="time">Movie Time:</label>
+            <input type="radio" class="time" id="time" name="time" value="time">
+            <label for="time">4.45pm</label><br>
+            <!-- <input type="radio" class="5" id="5" name="time" value="5">
+            <label for="5">05:00pm</label><br> -->
+            <br>
+            
+            <p><b> - Seat Plan - </b></p>
+            <!-- seat info like what colours are reserved etc -->
+
+            <div class="rowinfo">
+                <div class="seatPlan">
+                    <label class="reserved">
+                        <input type="checkbox" class="seat" disabled>
+                        <span></span>Reserved Seat
+                    </label>
+                </div>
+                <div class="seatPlan">
+                    <label class="selected">
+                        <input type="checkbox" class="seat" disabled>
+                        <span></span>Selected Seat
+                    </label>
+                </div>
+                <div class="seatPlan">
+                    <label>
+                        <input type="checkbox" class="seat" disabled>
+                        <span></span>Empty Seat
+                    </label>
+                </div>
+            </div>
+
+            <br>
+            <!-- booking seats -->
+            <div class="seatPlan">
+                <label class="reserved">
+                    <input type="checkbox" name="A1" class="seat">
+                    <span></span>
+                </label>
+                <label class="reserved">
+                    <input type="checkbox" name="A2" class="seat">
+                    <span></span>
+                </label>
+                <label>
+                    <input type="checkbox" name="A3" class="seat">
+                    <span></span>
+                </label>
+                <label>
+                    <input type="checkbox" name="A4" class="seat">
+                    <span></span>
+                </label>
+            </div>
+            <div class="seatPlan">
+                <label>
+                    <input type="checkbox" name="B1" class="seat">
+                    <span></span>
+                </label>
+                <label>
+                    <input type="checkbox" name="B2" class="seat">
+                    <span></span>
+                </label>
+                <label>
+                    <input type="checkbox" name="B3" class="seat">
+                    <span></span>
+                </label>
+                <label>
+                    <input type="checkbox" name="B4" class="seat">
+                    <span></span>
+                </label>
+            </div>
+            <div class="seatPlan">
+                <label>
+                    <input type="checkbox" name="C1" class="seat">
+                    <span></span>
+                </label>
+                <label>
+                    <input type="checkbox" name="C2" class="seat">
+                    <span></span>
+                </label>
+                <label>
+                    <input type="checkbox" name="C3" class="seat">
+                    <span></span>
+                </label>
+                <label>
+                    <input type="checkbox" name="C4" class="seat">
+                    <span></span>
+                </label>
+            </div>
+                
+            </div>
+        </form>
+    </section>
+    
+    
+    <hr>
+    <a href="/faq">FAQs & Enquiries</a>
+    <script src='/js/jquery.min.js'></script>
+    <script src='/js/auth.js'></script>
+    <script src='js/buyTicket.js'></script>
+</body>
+    
+</html>

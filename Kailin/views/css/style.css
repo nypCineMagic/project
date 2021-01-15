@@ -5,9 +5,9 @@ h2{
     color: darkblue;
 }
 
-.editProfile {
+/* .seatViewing {
     display:none;
-}
+} */
 
 nav {
     display:flex;
@@ -20,4 +20,54 @@ nav li {
 
 section {
     margin-top: 20px;
+}
+
+.seatPlan label{
+    display: flex;
+}
+
+.rowinfo
+
+
+.seat{
+    display: flex;
+}
+
+.seat + span{
+    background-color: lightgreen;
+    height: 30px;
+    width: 30px;
+    display: block;
+    padding: 0 0 0 0px;
+}
+
+.reserved .seat + span{
+    background-color: lightpink;
+}
+
+.selected .seat + span{
+    background-color: lightskyblue;
+}
+
+.seat:checked + span{
+    height: 30px;
+    width: 30px;
+    display: block;
+    padding: 0 0 0 0px;
+}
+
+.seat:disabled + span{
+    height: 30px;
+    width: 30px;
+    display: block;
+    padding: 0 0 0 0px;
+}
+
+.seatPlan, .rowinfo{
+    
+    padding: 0 15px;
+    max-width: 5550px;
+    margin: 10px auto 0;
+    display: flex;
+    justify-content: center;
 }
