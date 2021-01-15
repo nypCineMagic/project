@@ -45,6 +45,9 @@ var routes = function () {
     router.get('/viewProfile', function (req, res) {
         res.sendFile(__dirname + "/views/viewProfile.html");
     });
+    router.get('/cart', function (req, res) {
+        res.sendFile(__dirname + "/views/cart.html");
+    });
     router.get('/faq', function (req, res) {
         res.sendFile(__dirname + "/views/faq.html");
     });
@@ -94,7 +97,7 @@ var routes = function () {
     router.get('/js/*', function(req, res)  {
         res.sendFile(__dirname+"/views/"+req.originalUrl);
     });
-
+    
     //search movie by title
     router.get('/searchMovieByTitle/:title', function (req, res) {
         var title = req.body.title;
@@ -108,9 +111,19 @@ var routes = function () {
 
     });
 
+    router.put('/seat', function(req, res){
+        console.log("update seats");
+        var data = req.body;
+        db.updateSeat(data.id, data.rowNo, data.reserved,
+            function(err, seat){
+                res.end();
+            });
+
+    });
+
     //update user
     router.put('/user', function (req, res) {
-        console.log("update profile")
+        console.log("update profile");
         var data = req.body;
         db.updateUser(data.id, data.name, data.email, data.number, data.password, data.address, data.postalCode,
             function (err, user) {
@@ -139,10 +152,10 @@ var routes = function () {
             }
         })
     })
-    //get movie
-    router.get('/movie', function(req, res){
-        res.send(movieController.getMovie());
-    })
+    // //get movie
+    // router.get('/movie', function(req, res){
+    //     res.send(movieController.getMovie());
+    // })
 
     //register user
     router.post('/register', function (req, res) {

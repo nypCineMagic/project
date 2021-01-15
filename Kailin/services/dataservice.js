@@ -25,8 +25,8 @@ var database = {
                     genre: String,
                     language: String,
                     runningTime: String,
-                    Director: String,
-                    Cast: String,
+                    director: String,
+                    cast: String,
                     description: String
                 });
 
@@ -49,8 +49,7 @@ var database = {
 
                 seatSchema = schema({
                     rowNo: String,
-                    reserved: Boolean,
-                    movie: String
+                    reserved: Boolean
                 });
 
                 cartSchema = schema({
@@ -61,17 +60,46 @@ var database = {
                 });
 
                 var connection = mongoose.connection;
-                movieModel = connection.model('movies', movieSchema);
+                movieModel = connection.model('movie', movieSchema);
                 userModel = connection.model('users', userSchema);
                 ticketModel = connection.model('tickets', ticketSchema);
+                cartModel = connection.model('cart', cartSchema);
+                seatModel = connection.model('seat', seatSchema);
             } else {
                 console.log("Error connecting to Mongo DB");
             }
         })
     },
     getAllRMovies: function(callback){
+
+    // reserveSeat = function({seats, name}, callback){
+    //     Seat.updateMany({_id: {$in: seats}},{reserved: true, name: name}, callback);
+    // },
+
+    // addMany = function({seatsArray, name}, callback){
+    //     Seat.insertMany(seatsArray, callback);
+    // },
+
+    //get seat status
+    getSeatStatus: function(callback) {
+        seatModel.find({}, callback);
+    },
+    // used to create seat info
+    getSeatInfo: function(callback) {
+        seatModel.find({}, callback);
+    },
+    //update seat id
+    updateSeat: function (id, rN, r, callback) {
+        var updatedSeat = {
+            rowNo: rN,
+            reserved: r
+        };
+        seatModel.findByIdAndUpdate(id, updatedSeat, callback);
+    },
+    getAllMovies: function(callback){
         movieModel.find({}, callback);
     },
+    
     getAllTickets: function(callback){
         ticketModel.find({}, callback);
     },
@@ -79,14 +107,14 @@ var database = {
     deleteTicket: function(id, callback) {
         ticketModel.findByIdAndDelete(id, callback);
     },
+
     //getuserprofile
     getAllUser: function(callback){
         userModel.find({}, callback);
     },
     getUser: function(id, callback){
         userModel.findById(id, callback);
-    },
-    //update profile by id
+    },//update profile by id
     updateUser: function (id, n, e, num, pass, a, pc, callback) {
         var updatedUser = {
             name: n,
@@ -99,6 +127,7 @@ var database = {
         };
         userModel.findByIdAndUpdate(id, updatedUser, callback);
     },
+    
     // search movie by title
     searchMovieByTitle: function(t, callback){
         movieModel.find({title:t}, callback);

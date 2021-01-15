@@ -5,9 +5,9 @@ h2{
     color: darkblue;
 }
 
-/* .seatViewing {
+.seatViewing {
     display:none;
-} */
+}
 
 nav {
     display:flex;
