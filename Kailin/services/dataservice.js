@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var schema = mongoose.Schema;
 var movieSchema = {};
 var userSchema = {};
+var ticketSchema = {};
 var movieModel, userModel;
 
 mongoose.set('useNewUrlParser', true);
@@ -37,9 +38,17 @@ var database = {
                     token: String
                 });
 
+                ticketSchema = schema({
+                    name: String,
+                    price: String,
+                    title: String,
+                    description: String
+                });
+
                 var connection = mongoose.connection;
                 movieModel = connection.model('movies', movieSchema);
                 userModel = connection.model('users', userSchema);
+                ticketModel = connection.model('tickets', ticketSchema);
             } else {
                 console.log("Error connecting to Mongo DB");
             }
@@ -47,6 +56,13 @@ var database = {
     },
     getAllRMovies: function(callback){
         movieModel.find({}, callback);
+    },
+    getAllTickets: function(callback){
+        ticketModel.find({}, callback);
+    },
+
+    deleteTicket: function(id, callback) {
+        ticketModel.findByIdAndDelete(id, callback);
     },
     //getuserprofile
     getAllUser: function(callback){
