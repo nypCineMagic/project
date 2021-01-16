@@ -123,6 +123,7 @@ var routes = function () {
             });
 
     });
+    //get items from cart
     router.get('/cart', function(req, res){
         db.getAllCart(function(err, cart){
             if (err) {
@@ -159,7 +160,14 @@ var routes = function () {
                 } else {
                     res.status(200).send("ticked deleted successfully from cart");
                 }
+            }
+        });
+    })
 
+    //checkout
+    router.get('/checkout', function(req, res){
+        
+    });
     //update user
     router.put('/user', function (req, res) {
         console.log("update profile");

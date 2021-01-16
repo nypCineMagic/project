@@ -55,8 +55,10 @@ var database = {
                 cartSchema = schema({
                     title: String,
                     date: String,
+                    time: String,
                     price: String,
                     noOfTicket: Number,
+                    
                 });
 
                 var connection = mongoose.connection;
