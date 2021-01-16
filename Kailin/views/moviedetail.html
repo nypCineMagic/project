@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <h1>CineMagic</h1>
+    <style>
+        .protectedSection,
+        .unprotectedSection {
+            display: none;
+        }
+    </style>
+    <header>
+        <nav>
+            <li><a href="/">Home Page</a></li>
+            <li><a href="/recommend">Movie Recommendation</a></li>
+            <li><a href="#" class="logoutLink">Logout</a></li>
+        </nav>
+    </header>
+    <section>
+        <!-- search movie -->
+            <input type="text" placeholder="Movie Title" id="title" name="title">
+            <input type="submit" class="searchBtn" value="Search Movie">
+    </section>
+    <br>
+    Movie Details:
+    <section class="movieResult">
+        
+    </section>
+    
+
+    
+    
+</body>
+    <script src='/js/jquery.min.js'></script>
+    <script src='/js/auth.js'></script>
+    <script src='/js/index.js'></script>
+    <script src='/js/searchMovie.js'></script>
+</html>

@@ -42,6 +42,11 @@ var routes = function () {
         res.sendFile(__dirname + "/views/index.html");
     });
 
+    //Movie details route
+    router.get('/moviedetail', function (req, res) {
+        res.sendFile(__dirname + "/views/moviedetail.html");
+    });
+
     router.get('/viewProfile', function (req, res) {
         res.sendFile(__dirname + "/views/viewProfile.html");
     });

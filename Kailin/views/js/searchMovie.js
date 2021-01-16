@@ -17,10 +17,9 @@ $(document).ready(function () {
                     $(".movieResult").append(`
                         <article>
                         <div>
-                        <h2>${movieResult.title}</h2>
+                        <a href="/moviedetail" class="moviedetail"><h2>${movieResult.title}</h2></a>
                             Genre: ${movieResult.genre}<br>
                             Language: ${movieResult.language}<br>
-
                         </div>
                         </article>
                     `);
@@ -35,6 +34,7 @@ $(document).ready(function () {
     })
     return false;
 })
+
 
 
     
