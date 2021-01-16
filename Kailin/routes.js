@@ -102,7 +102,7 @@ var routes = function () {
     });
     
     //search movie by title
-    router.get('/movies/title', function (req, res) {
+    router.post('/movies/title', function (req, res) {
         var title = req.body.title;
         db.searchMovieByTitle(title,function(err,movie) {
             if (err) {
