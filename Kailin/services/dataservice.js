@@ -72,7 +72,6 @@ var database = {
             }
         })
     },
-    getAllRMovies: function(callback){
 
     // reserveSeat = function({seats, name}, callback){
     //     Seat.updateMany({_id: {$in: seats}},{reserved: true, name: name}, callback);
