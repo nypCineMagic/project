@@ -1,8 +1,14 @@
 $(document).ready(function () {
-    $.ajax({
-        url: "/searchMovieByTitle",
-        method: "get"
-    })
+    
+   
+    $(".searchBtn").click(function(e){
+        //prevents the browser from navigating to "#", as defined by the <a href> tag
+        e.preventDefault();
+        
+        $.ajax({
+            url: "/movies/title",
+            method: "get"
+        })
         .done(
             function (data) {
                 data.forEach(function(movieResult) {// 
@@ -27,6 +33,7 @@ $(document).ready(function () {
                 console.log(err.responseText);
             }
         )
+    })
 })
 
 function searchMovieByTitle() {
@@ -42,18 +49,19 @@ function searchMovieByTitle() {
     };
     $.ajax(
         {
-            url: '/searchMovieByTitle?token='+sessionStorage.authToken,
+            url: '/movie?token='+sessionStorage.authToken,
             method: 'put',
             data: movie
         }
     ).done(
         function (data) {
-            alert("Movie Result!");
+            alert("");
         }
     ).fail(
         function (err) {
            console.log(err.responseText);
         }
     );
+    
     return false;
 }

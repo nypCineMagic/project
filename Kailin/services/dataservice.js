@@ -146,8 +146,9 @@ var database = {
     
     // search movie by title
     searchMovieByTitle: function(t, callback){
-        movieModel.find({title:t}, callback);
+        movieModel.find({title: new RegExp(t,'i')}, callback);
     },
+    
     addUser: function (na, p, e, n, a, pc, callback) {
         var newUser = new userModel({
             name: na,
