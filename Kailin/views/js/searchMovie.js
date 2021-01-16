@@ -20,10 +20,7 @@ $(document).ready(function () {
                         <h2>${movieResult.title}</h2>
                             Genre: ${movieResult.genre}<br>
                             Language: ${movieResult.language}<br>
-                            Running Time: ${movieResult.runningTime}<br>
-                            Director: ${movieResult.director}<br>
-                            Cast: ${movieResult.cast}<br>
-                            Description: ${movieResult.description}<br>
+
                         </div>
                         </article>
                     `);
