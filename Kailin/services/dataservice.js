@@ -49,7 +49,7 @@ var database = {
 
                 seatSchema = schema({
                     rowNo: String,
-                    reserved: Boolean
+                    reserved: Boolean,
                 });
 
                 cartSchema = schema({

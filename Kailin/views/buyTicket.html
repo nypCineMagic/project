@@ -32,6 +32,14 @@
     <br>
     <section class="seatViewing">
         <form action="/buyTicket" method="POST">
+            <label>Select a Movie</label>
+            <select id="movie">
+                <option value="wonder">Wonder Women 1984</option>
+                <option value="neverland">The Promised Neverland</option>
+                <option value="croods">The Croods: A New Age PG</option>
+                <option value="rescue">The Rescue PG13</option>
+            </select>
+            <br>
             <!-- Only have one area -->
             <label for="location">Cinema Location :</label>
             <select id="location" name="location">
@@ -75,15 +83,15 @@
             <div class="seatPlan">
                 <label>
                     <input type="checkbox" value="A1" class="seat">
-                    <!-- <span></span> -->
+                    <span></span>
                 </label>
                 <label>
                     <input type="checkbox" value="A2" class="seat">
-                    <!-- <span></span> -->
+                    <span></span>
                 </label>
                 <label>
                     <input type="checkbox" value="A3" class="seat">
-                    <!-- <span></span> -->
+                    <span></span>
                 </label>
                 <label>
                     <input type="checkbox" value="A4" class="seat">
@@ -127,7 +135,7 @@
                 </label>
             </div>
             </div>
-            <a href="/addCart"><input type="submit" value="Buy Ticket"></a>
+            <a href="/addCart"><input type="submit" value="Add to Movie Cart"></a>
         </form>
     </section>
     <hr>
