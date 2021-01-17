@@ -17,9 +17,10 @@ $(document).ready(function () {
                     $(".movieResult").append(`
                         <article>
                         <div>
-                        <a href="/moviedetail" class="moviedetail"><h2>${movieResult.title}</h2></a>
+                        <h3><a href="/moviedetail?id=${movieResult._id}">${movieResult.title}</a></h3>
                             Genre: ${movieResult.genre}<br>
                             Language: ${movieResult.language}<br>
+                            Running Time: ${movieResult.runningTime}<br>
                         </div>
                         </article>
                     `);

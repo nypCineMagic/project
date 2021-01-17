@@ -197,6 +197,16 @@ var routes = function () {
         })
     })
 
+    router.get('/movie', function(req, res){
+        db.getAllMovies(function(err, movie){
+            if (err) {
+                res.status(500).send("Unable to find movie");
+            } else {
+                res.status(200).send(movie);
+            }
+        })
+    })
+
     router.get('/user/:id', function(req, res){
         var id = req.params.id;
         console.log(id);
@@ -205,6 +215,18 @@ var routes = function () {
                 res.status(500).send("Unable to find user with this token");
             } else {
                 res.status(200).send(user);
+            }
+        })
+    })
+
+    router.get('/movie/:id', function(req, res){
+        var id = req.params.id;
+        console.log(id);
+        db.getMovie(id, function(err, movie){
+            if (err) {
+                res.status(500).send("Unable to find movie");
+            } else {
+                res.status(200).send(movie);
             }
         })
     })

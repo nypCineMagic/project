@@ -129,6 +129,9 @@ var database = {
     getAllUser: function(callback){
         userModel.find({}, callback);
     },
+    getMovie: function(id, callback){
+        movieModel.findById(id, callback);
+    },
     getUser: function(id, callback){
         userModel.findById(id, callback);
     },//update profile by id
