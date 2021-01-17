@@ -53,8 +53,9 @@ var database = {
                 });
 
                 cartSchema = schema({
+                    name: String,
                     title: String,
-                    date: String,
+                    location: String,
                     time: String,
                     price: String,
                     noOfTicket: Number,
