@@ -1,68 +1,62 @@
-var ticketId = 0;
-$(document).ready(function(){
-    // $(".reserved input").prop('checked', true);
-    // $(".reserved input").prop('disabled', true);
-    // $("label").click(function(){
-    //     if(!$(this).hasClass("reserved")){
-    //         if($(this).find("input").is(":checked")){
-    //         $(this).addClass("selected");
-    //         }else{
-    //             console.log("selected");
-    //             $(this).removeClass("selected");
-    //         }
-    //     }
-    //     else{
-    //         alert("Already booked");
-    //     }
-    // })
+$(document).ready(function () {
+    
 
+    $(".addEvent").click(function () {
+        $(".addNewEvent").show();
+    })
+})
 
-    var urlParams = new URLSearchParams(window.location.search);
-    ticketId = urlParams.get('id');
+function addToCart() {
+    var newCart = {
+        name: $("#name").val(),
+        title: $("#title").val(),
+        location: $("#location").val(),
+        time: $("#time").val(),
+        noOfTicket: $("#noOfTicket").val(),
+        price: $("#price").val()
+    };
 
     $.ajax({
-        url: "/ticket/" + userId,
-        method: "get" // after get user
-    }).done( // fill in data so it will get user
-        function (data) { // callback data
-            console.log(data);
-            $('#rowNo').val(data.rowNo);
-            $('#reserved').val(data.reserved);
-        }
-    ).fail(
-        function (err) {
-            console.log(err.responseText);
-        }
-    );
-
-    $(".buyTicket").click(function () {
-        $(".seatViewing").show();
+        url:"/cart?token="+sessionStorage.authToken,
+        method:"POST",
+        data: newCart
     })
-    
-});
-
-
-
-function updateSeat() {
-    var seat = {
-        id: ticketId,
-        rowNo: $("#rowNo").val(),
-        reserved: $("#reserved").val()
-    };
-    $.ajax(
-        {
-            url: '/seat?token='+sessionStorage.authToken,
-            method: 'put',
-            data: seat
-        }
-    ).done(
-        function (data) {
-            alert("Seat Information updated!");
-        }
-    ).fail(
-        function (err) {
-           console.log(err.responseText);
-        }
-    );
+    .done(function(data){
+        $(".statusMessage").text(data);
+        setTimeout(function(){
+            location.reload();
+        },3000);
+    })
+    .fail(function(err){
+        $(".statusMessage").text("Unable to add into cart");
+    })
     return false;
-};
+}
+
+// $.ajax({
+    //     url: "/buyTicket",
+    //     method: "get"
+    // })
+    //     .done(
+    //         function (data) {
+    //             data.forEach(function(data) {
+    //                 $(".cart").append(`
+    //                     <article>
+    //                     <h2>${data.name} - cart</h2>
+    //                     <div>
+    //                         Title: ${data.title}<br>
+    //                         Location: ${data.location}<br>
+    //                         Time of Movie${data.time}<br>
+    //                         Number of Tickets bought: ${data.noOfTicket}<br>
+    //                         Price of Ticket${data.price}<br>
+    //                     </div>
+    //                     </article>
+    //                 `);
+    //             });
+    //         }
+    //     )
+    //     .fail(
+    //         function (err) {
+    //             console.log(err.responseText);
+    //         }
+    //     )

@@ -1,30 +1,26 @@
+var userId = 0;
 $(document).ready(function () {
     userId = sessionStorage.Id
-
     $.ajax({
         url: "/cart/" + userId,
         method: "get"
     })
         .done(
             function (data) {
-                data.forEach(function(cart) {
+                data.forEach(function(data) {
                     $(".cart").append(`
                         <article>
+                        <h2>${data.name} - cart</h2>
                         <div>
-                        <h3></h3>
-                        <h3>${cart.name}</h3>
-                            Email Address: ${cart.email}<br>
-                            Mobile Number: ${cart.number}<br>
-                            Password: ${cart.password}<br>
-                            Home Address: ${cart.address}<br>
-                            Postal Code: ${cart.postalCode}<br>
+                            Title: ${data.title}<br>
+                            Location: ${data.location}<br>
+                            Time of Movie${data.time}<br>
+                            Number of Tickets bought: ${data.noOfTicket}<br>
+                            Price of Ticket${data.price}<br>
                         </div>
-                        <h4>Total Price : $</h4>
-                        <br>
-                        
                         </article>
                     `);
-                })
+                });
             }
         )
         .fail(
@@ -32,9 +28,5 @@ $(document).ready(function () {
                 console.log(err.responseText);
             }
         )
-        $(".buyTicket").click(function () {
-            $(".seatViewing").show();
-        })
+    
 })
-
-{/* <a href="/editProfile?id=${cart._id}"> */}

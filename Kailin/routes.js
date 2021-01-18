@@ -132,7 +132,7 @@ var routes = function () {
     router.get('/checkout', function(req, res){
         
     });
-    
+
     //get items from cart
     router.get('/cart', function(req, res){
         db.getAllCart(function(err, cart){
@@ -173,7 +173,19 @@ var routes = function () {
             }
         });
     })
-
+    //add to cart
+    router.post('/cart', function(req, res){
+        var data = req.body;
+        console.log(data);
+        db.addCart(data.name, data.location, data.time, data.price, data.noOfTicket, data.title,
+            function(err, cart){
+                if(err){
+                    res.status(500).send("Unable to add to cart");
+                }else{
+                    res.status(200).send("Successfully added to cart");
+                }
+            })
+    });
     //checkout
     router.get('/checkout', function(req, res){
         

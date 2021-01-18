@@ -52,13 +52,14 @@ var database = {
                     reserved: Boolean,
                 });
 
+                // need to referenece movie to movie schema
                 cartSchema = schema({
                     name: String,
                     location: String,
                     time: String,
                     price: String,
                     noOfTicket: Number,
-                    title: String,
+                    movie: String,
                     
                 });
 
@@ -102,13 +103,14 @@ var database = {
         cartModel.find({}, callback);
     },
     //add to cart
-    addCart: function (t, d, ti, p, nt, callback) {
+    addCart: function (n, l, ti, p, not, t, callback) {
         var newCart = new cartModel ({
-            title: t,
-            date: d,
+            name: n,
+            location: l,
             time: ti,
             price: p,
-            noOfTicket: nt,
+            noOfTicket: not,
+            title: t
         });
         newCart.save(callback);
     },
