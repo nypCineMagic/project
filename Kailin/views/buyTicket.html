@@ -8,24 +8,35 @@
 <body>
     <h1>CineMagic</h1>
     <style>
-        .protectedSection,.unprotectedSection {
+        .protectedSection,
+        .unprotectedSection {
             display: none;
         }
     </style>
     <header>
         <nav>
-            <li><section class=""><a href="/">Home Page</a></section></li>
+            <li>
+                <section class=""><a href="/">Home Page</a></section>
+            </li>
             <li>
                 <section><a href="/recommend">Movie Recommendation</a></section>
             </li>
-            <li><section class="protectedSection"><a href="/viewProfile">View Profile</a></section></li>
-            <li><section class="unprotectedSection"><a href="/login">Login</a></section></li>
-            <li><section class="unprotectedSection"><a href="/register">Register User</a></section></li>
-            <li><section class="protectedSection"><a href="#" class="logoutLink">Logout</a></section></li>
+            <li>
+                <section class="protectedSection"><a href="/viewProfile">View Profile</a></section>
+            </li>
+            <li>
+                <section class="unprotectedSection"><a href="/login">Login</a></section>
+            </li>
+            <li>
+                <section class="unprotectedSection"><a href="/register">Register User</a></section>
+            </li>
+            <li>
+                <section class="protectedSection"><a href="#" class="logoutLink">Logout</a></section>
+            </li>
         </nav>
     </header>
     <h2>Booking Movie Ticket</h2>
-    
+
     <section>
         <button class="buyTicket">Buy Ticket</button>
     </section>
@@ -49,13 +60,42 @@
             <br>
             <label for="time">Movie Time:</label>
             <input type="radio" class="time" id="time" name="time" value="time">
-            <label for="time">4.45pm</label><br>
+            <label for="time">4.45pm</label>
             <!-- <input type="radio" class="5" id="5" name="time" value="5">
             <label for="5">05:00pm</label><br> -->
             <br>
-            
-            <p><b> - Seat Plan - </b></p>
-            <!-- seat info like what colours are reserved etc -->
+            <p>Due to Covid, we will be organising your seats for you</p>
+            <!-- <div class="dropdown"> -->
+                <label for="people">No. Of People :</label>
+                <select id="people" name="people">
+                    <option value="1">1</option>
+                    <!-- <option value="AMK">AMK Hub</option> -->
+                </select>
+                <!-- <br><br>
+                <button class="dropbtn">DropDown</button>
+                <div class="dropdown-content">
+                    <a href="1">1</a>
+                    <a href="2">2</a>
+                </div>
+            </div> -->
+<br><br>
+
+
+
+            <a href="/addCart"><input type="submit" value="Add to Movie Cart"></a>
+        </form>
+    </section>
+    <hr>
+    <a href="/faq">FAQs & Enquiries</a>
+    <script src='/js/jquery.min.js'></script>
+    <script src='/js/auth.js'></script>
+    <script src='js/cart.js'></script>
+</body>
+
+</html>
+
+<!-- <p><b> - Seat Plan - </b></p>
+            seat info like what colours are reserved etc
 
             <div class="rowinfo">
                 <div class="seatPlan">
@@ -79,7 +119,7 @@
             </div>
 
             <br>
-            <!-- booking seats -->
+             booking seats
             <div class="seatPlan">
                 <label>
                     <input type="checkbox" value="A1" class="seat">
@@ -95,54 +135,43 @@
                 </label>
                 <label>
                     <input type="checkbox" value="A4" class="seat">
-                    <!-- <span></span> -->
+                    <span></span>
                 </label>
             </div>
             <div class="seatPlan">
                 <label>
                     <input type="checkbox" value="B1" class="seat">
-                    <!-- <span></span> -->
+                     <span></span> 
                 </label>
                 <label>
                     <input type="checkbox" value="B2" class="seat">
-                    <!-- <span></span> -->
+                     <span></span> 
                 </label>
                 <label>
                     <input type="checkbox" value="B3" class="seat">
-                    <!-- <span></span> -->
+                     <span></span> 
                 </label>
                 <label>
                     <input type="checkbox" value="B4" class="seat">
-                    <!-- <span></span> -->
+                     <span></span> 
                 </label>
             </div>
             <div class="seatPlan">
                 <label>
                     <input type="checkbox" value="C1" class="seat">
-                    <!-- <span></span> -->
+                     <span></span> 
                 </label>
                 <label>
                     <input type="checkbox" value="C2" class="seat">
-                    <!-- <span></span> -->
+                     <span></span> 
                 </label>
                 <label>
                     <input type="checkbox" value="C3" class="seat">
-                    <!-- <span></span> -->
+                     <span></span> 
                 </label>
                 <label>
                     <input type="checkbox" value="C4" class="seat">
-                    <!-- <span></span> -->
+                     <span></span> 
                 </label>
             </div>
-            </div>
-            <a href="/addCart"><input type="submit" value="Add to Movie Cart"></a>
-        </form>
-    </section>
-    <hr>
-    <a href="/faq">FAQs & Enquiries</a>
-    <script src='/js/jquery.min.js'></script>
-    <script src='/js/auth.js'></script>
-    <script src='js/buyTicket.js'></script>
-</body>
-    
-</html>
+            </div> -->

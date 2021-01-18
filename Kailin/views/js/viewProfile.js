@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: "/user" ,
+        url: "/user/"+ Id,
         method: "get"
     })
         .done(
