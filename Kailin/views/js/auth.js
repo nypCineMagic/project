@@ -1,7 +1,6 @@
 $(document).ready(function(){
 
     var token = sessionStorage.authToken;
-    // var userId = sessionStorage.data.userId;
 
     if(token==undefined) {
         $(".protectedSection").hide();
@@ -50,7 +49,8 @@ function login() {
         $(".statusMessage").text(data.message);
         //storing in session
         sessionStorage.authToken=data.token;
-        sessionStorage.userId=data.userId;
+        sessionStorage.Id=data.Id;
+        console.log(Id)
     })
     .fail(function(err){
         $(".statusMessage").text(err.responseText);

@@ -212,9 +212,10 @@ var routes = function () {
         console.log(id);
         db.getUser(id, function(err, user){
             if (err) {
-                res.status(500).send("Unable to find user with this token");
+                res.status(500).send("Unable to find user with this id");
             } else {
                 res.status(200).send(user);
+                console.log(user);
             }
         })
     })
@@ -260,7 +261,7 @@ var routes = function () {
                     var strToHash = user.name + Date.now();
                     var token = crypto.createHash('md5').update(strToHash).digest('hex');
                     db.updateToken(user._id, token, function (err, user) {
-                        res.status(200).json({ 'message': 'Login successful.', 'token': token });
+                        res.status(200).json({ 'message': 'Login successful.', 'token': token , 'Id': user._id});
                     });
                 }
             }
