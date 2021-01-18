@@ -30,6 +30,9 @@ $(document).ready(function () {
                 console.log(err.responseText);
             }
         )
+        $(".buyTicket").click(function () {
+            $(".seatViewing").show();
+        })
 })
 
 {/* <a href="/editProfile?id=${cart._id}"> */}

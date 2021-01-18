@@ -58,7 +58,7 @@ var database = {
                     time: String,
                     price: String,
                     noOfTicket: Number,
-                    title: [{type: Schema.Types.ObjectId, ref: 'Movie'}],
+                    title: String,
                     
                 });
 
