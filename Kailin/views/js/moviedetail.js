@@ -7,10 +7,10 @@ $(document).ready(function() {
     
     $.ajax({
         url: "/movie/" + movieId,
-        method: "get" // after get user
-    }).done( // fill in data so it will get user
+        method: "get"
+    }).done(
         function (data) {
-            data.forEach(function(movie) {// 
+            
                 $(".moviedetails").append(`
                     <article>
                     <div>
@@ -24,7 +24,7 @@ $(document).ready(function() {
                     </div>
                     </article>
                 `);
-            })
+            
         }
     ).fail(
         function (err) {
