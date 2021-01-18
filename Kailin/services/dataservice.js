@@ -6,7 +6,8 @@ var userSchema = {};
 var ticketSchema = {};
 var seatSchema = {};
 var cartSchema = {};
-var movieModel, userModel, cartModel, seatModel, ticketModel;
+var faqSchema = {};
+var movieModel, userModel, cartModel, seatModel, ticketModel, faqModel;
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -63,12 +64,17 @@ var database = {
                     
                 });
 
+                faqSchema = schema({
+                    inquiry: String
+                });
+
                 var connection = mongoose.connection;
                 movieModel = connection.model('movie', movieSchema);
                 userModel = connection.model('users', userSchema);
                 ticketModel = connection.model('tickets', ticketSchema);
                 cartModel = connection.model('cart', cartSchema);
                 seatModel = connection.model('seat', seatSchema);
+                faqModel = connection.model('faqs', faqSchema);
             } else {
                 console.log("Error connecting to Mongo DB");
             }
@@ -181,6 +187,12 @@ var database = {
     },
     removeToken: function(id,callback) {
         userModel.findByIdAndUpdate(id, {$unset: {token: 1}},callback);
+    },
+    addFaq: function(i, callback){
+        var newFaq = new faqModel({
+            inquiry: i
+        });
+        newFaq.save(callback);
     }
 };
 
