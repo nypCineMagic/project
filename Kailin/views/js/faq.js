@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: "/searchfaq",
+        url: "/faqs",
         method: "get"
     })
         .done(
@@ -14,4 +14,8 @@ $(document).ready(function () {
                 console.log(err.responseText);
             }
         )
+
+    $(".addFaq").click(function () {
+        $(".addNewFaq").show();
+    })
 })
