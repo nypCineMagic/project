@@ -50,7 +50,7 @@ var routes = function () {
     router.get('/viewProfile', function (req, res) {
         res.sendFile(__dirname + "/views/viewProfile.html");
     });
-    router.get('/addCart', function (req, res) {
+    router.get('/cart', function (req, res) {
         res.sendFile(__dirname + "/views/cart.html");
     });
     router.get('/faq', function (req, res) {

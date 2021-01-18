@@ -60,7 +60,7 @@ var database = {
                     time: String,
                     price: String,
                     noOfTicket: Number,
-                    movie: String,
+                    title: String,
                     
                 });
 
