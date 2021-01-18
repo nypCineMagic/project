@@ -37,12 +37,13 @@
     </header>
     <h2>Booking Movie Ticket</h2>
 
+    <br>
     <section>
         <button class="buyTicket">Buy Ticket</button>
     </section>
     <br>
     <section class="seatViewing">
-        <form action="/buyTicket" method="POST">
+        <form onsubmit="return addToCart();">
             <label>Select a Movie</label>
             <select id="movie">
                 <option value="wonder">Wonder Women 1984</option>
@@ -64,25 +65,13 @@
             <!-- <input type="radio" class="5" id="5" name="time" value="5">
             <label for="5">05:00pm</label><br> -->
             <br>
-            <p>Due to Covid, we will be organising your seats for you</p>
-            <!-- <div class="dropdown"> -->
-                <label for="people">No. Of People :</label>
-                <select id="people" name="people">
-                    <option value="1">1</option>
-                    <!-- <option value="AMK">AMK Hub</option> -->
-                </select>
-                <!-- <br><br>
-                <button class="dropbtn">DropDown</button>
-                <div class="dropdown-content">
-                    <a href="1">1</a>
-                    <a href="2">2</a>
-                </div>
-            </div> -->
-<br><br>
-
-
-
-            <a href="/addCart"><input type="submit" value="Add to Movie Cart"></a>
+            <p>Due to Covid, we will be organising your seats for you</p>d
+            <label for="people">No. Of People :</label>
+            <select id="people" name="people">
+                <option value="1">1</option>
+            </select>
+            <br><br>
+            <input type="submit" value="Add to Movie Cart"></a>
         </form>
     </section>
     <hr>

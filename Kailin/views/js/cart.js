@@ -1,6 +1,8 @@
 $(document).ready(function () {
+    userId = sessionStorage.Id
+
     $.ajax({
-        url: "/cart",
+        url: "/cart/" + userId,
         method: "get"
     })
         .done(
