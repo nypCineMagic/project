@@ -132,6 +132,7 @@ var routes = function () {
     router.get('/checkout', function(req, res){
         
     });
+    
     //get items from cart
     router.get('/cart', function(req, res){
         db.getAllCart(function(err, cart){

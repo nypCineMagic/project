@@ -54,11 +54,11 @@ var database = {
 
                 cartSchema = schema({
                     name: String,
-                    title: String,
                     location: String,
                     time: String,
                     price: String,
                     noOfTicket: Number,
+                    title: [{type: Schema.Types.ObjectId, ref: 'Movie'}],
                     
                 });
 
@@ -98,6 +98,9 @@ var database = {
         };
         seatModel.findByIdAndUpdate(id, updatedSeat, callback);
     },
+    getAllCart: function(callback){
+        cartModel.find({}, callback);
+    },
     //add to cart
     addCart: function (t, d, ti, p, nt, callback) {
         var newCart = new cartModel ({
@@ -134,7 +137,8 @@ var database = {
     },
     getUser: function(id, callback){
         userModel.findById(id, callback);
-    },//update profile by id
+    },
+    //update profile by id
     updateUser: function (id, n, e, num, pass, a, pc, callback) {
         var updatedUser = {
             name: n,
