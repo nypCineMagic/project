@@ -1,13 +1,11 @@
-var userId = 0;
 $(document).ready(function () {
-    userId = sessionStorage.Id
     $.ajax({
-        url: "/cart/" + userId,
+        url: "/cart?token=" + sessionStorage.authToken,
         method: "get"
     })
         .done(
             function (data) {
-                data.forEach(function(data) {
+                // data.forEach(function(data) {
                     $(".cart").append(`
                         <article>
                         <h2>${data.name} - cart</h2>
@@ -22,11 +20,42 @@ $(document).ready(function () {
                     `);
                 });
             }
+            
         )
         .fail(
             function (err) {
                 console.log(err.responseText);
             }
         )
-    
-})
+        $(".buyTicketBtn").click(function () {
+            $(".buyTickets").show();
+        })
+
+// })
+
+function addToCart() {
+    var newCart = {
+        name: $("#name").val(),
+        title: $("#title").val(),
+        location: $("#location").val(),
+        time: $("#time").val(),
+        noOfTicket: $("#noOfTicket").val(),
+        price: $("#price").val()
+    };
+
+    $.ajax({
+        url:"/cart?token="+sessionStorage.authToken,
+        method:"POST",
+        data: newCart
+    })
+    .done(function(data){
+        $(".statusMessage").text(data);
+        setTimeout(function(){
+            location.reload();
+        },3000);
+    })
+    .fail(function(err){
+        $(".statusMessage").text("Unable to add into cart");
+    })
+    return false;
+}

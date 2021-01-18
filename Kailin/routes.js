@@ -126,15 +126,15 @@ var routes = function () {
 
     });
 
-    router.put('/seat', function(req, res){
-        console.log("update seats");
-        var data = req.body;
-        db.updateSeat(data.id, data.rowNo, data.reserved,
-            function(err, seat){
-                res.end();
-            });
+    // router.put('/seat', function(req, res){
+    //     console.log("update seats");
+    //     var data = req.body;
+    //     db.updateSeat(data.id, data.rowNo, data.reserved,
+    //         function(err, seat){
+    //             res.end();
+    //         });
 
-    });
+    // });
 
     router.get('/checkout', function(req, res){
         
@@ -142,28 +142,27 @@ var routes = function () {
 
     //get items from cart
     router.get('/cart', function(req, res){
-        db.getAllCart(function(err, cart){
+        db.getAllCart(function(err, carts){
             if (err) {
                 res.status(500).send("Unable to find Cart");
             } else {
-                res.status(200).send(cart);
+                res.status(200).send(carts);
             }
         })
     })
-
-    //add to cart
-    router.put('/cart', function (req, res) {
-        console.log("Added to Cart!");
-        var data = req.body;
-        db.addCart(data.id, data.name, data.title, data.date, data.time, data.price, data.noOfTicket,
-            function (err, cart) {
-                if (err) {
-                    res.status(500).send("Unable to add into cart");
-                } else {
-                    res.status(200).send("Added successfully to Cart!");
-                }
-            });
-    });
+    //get item by id
+    router.get('/cart/:id', function(req, res){
+        var id = req.params.id;
+        console.log(id);
+        db.getCart(id, function(err, carts){
+            if (err) {
+                res.status(500).send("Unable to find any items in this cart");
+            } else {
+                res.status(200).send(carts);
+                console.log(carts);
+            }
+        })
+    })
 
     //remove from cart
     router.delete('/cart/:id', function (req, res) {
@@ -172,7 +171,7 @@ var routes = function () {
             if (err) {
                 res.status(500).send("Unable to delete the ticket in cart");
             } else {
-                if (event == null) {
+                if (cart == null) {
                     res.status(200).send("No ticker is deleted from cart");
                 } else {
                     res.status(200).send("ticked deleted successfully from cart");
@@ -184,6 +183,7 @@ var routes = function () {
     router.post('/cart', function(req, res){
         var data = req.body;
         console.log(data);
+        console.log("Added to Cart");
         db.addCart(data.name, data.location, data.time, data.price, data.noOfTicket, data.title,
             function(err, cart){
                 if(err){

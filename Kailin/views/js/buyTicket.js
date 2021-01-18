@@ -1,37 +1,37 @@
-$(document).ready(function () {
+// $(document).ready(function () {
     
 
-    $(".addEvent").click(function () {
-        $(".addNewEvent").show();
-    })
-})
+//     $(".buyTicket").click(function () {
+//         $(".seatViewing").show();
+//     })
+// })
 
-function addToCart() {
-    var newCart = {
-        name: $("#name").val(),
-        title: $("#title").val(),
-        location: $("#location").val(),
-        time: $("#time").val(),
-        noOfTicket: $("#noOfTicket").val(),
-        price: $("#price").val()
-    };
+// function addToCart() {
+//     var newCart = {
+//         name: $("#name").val(),
+//         title: $("#title").val(),
+//         location: $("#location").val(),
+//         time: $("#time").val(),
+//         noOfTicket: $("#noOfTicket").val(),
+//         price: $("#price").val()
+//     };
 
-    $.ajax({
-        url:"/cart?token="+sessionStorage.authToken,
-        method:"POST",
-        data: newCart
-    })
-    .done(function(data){
-        $(".statusMessage").text(data);
-        setTimeout(function(){
-            location.reload();
-        },3000);
-    })
-    .fail(function(err){
-        $(".statusMessage").text("Unable to add into cart");
-    })
-    return false;
-}
+//     $.ajax({
+//         url:"/cart?token="+sessionStorage.authToken,
+//         method:"POST",
+//         data: newCart
+//     })
+//     .done(function(data){
+//         $(".statusMessage").text(data);
+//         setTimeout(function(){
+//             location.reload();
+//         },3000);
+//     })
+//     .fail(function(err){
+//         $(".statusMessage").text("Unable to add into cart");
+//     })
+//     return false;
+// }
 
 // $.ajax({
     //     url: "/buyTicket",

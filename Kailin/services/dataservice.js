@@ -90,23 +90,26 @@ var database = {
     // },
 
     //get seat status
-    getSeatStatus: function(callback) {
-        seatModel.find({}, callback);
-    },
+    // getSeatStatus: function(callback) {
+    //     seatModel.find({}, callback);
+    // },
     // used to create seat info
-    getSeatInfo: function(callback) {
-        seatModel.find({}, callback);
-    },
+    // getSeatInfo: function(callback) {
+    //     seatModel.find({}, callback);
+    // },
     //update seat id
-    updateSeat: function (id, rN, r, callback) {
-        var updatedSeat = {
-            rowNo: rN,
-            reserved: r
-        };
-        seatModel.findByIdAndUpdate(id, updatedSeat, callback);
-    },
+    // updateSeat: function (id, rN, r, callback) {
+    //     var updatedSeat = {
+    //         rowNo: rN,
+    //         reserved: r
+    //     };
+    //     seatModel.findByIdAndUpdate(id, updatedSeat, callback);
+    // },
     getAllCart: function(callback){
         cartModel.find({}, callback);
+    },
+    getCart: function (id, callback) {
+        cartModel.findById(id, callback);
     },
     //add to cart
     addCart: function (n, l, ti, p, not, t, callback) {
