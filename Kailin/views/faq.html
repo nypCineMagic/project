@@ -59,16 +59,18 @@
         <p>For assistance with lost and found items, kindly use the feedback option here to drop us an email and we will
             get back to you soonest.</p>
     </section>
-    <section>
-        <label for="enquiry">Additional enquires:</label><br>
-        <textarea id="enquiry" name="enquiry" rows="4" cols="50">
-        </textarea>
+    <section class="addNewFaq">
+        <form action="/faqs" method="POST">
+        <label for="inquiry">Additional enquires:</label><br>
+        <textarea id="inquiry" name="inquiry" rows="4" cols="50"></textarea>
+        <button class="addFaq">Send</button>
+        </form>
     </section>
     <hr>
     <a href="/faq">FAQs & Enquiries</a>
 </body>
 <script src='/js/jquery.min.js'></script>
 <script src='/js/auth.js'></script>
-<script src='/js/index.js'></script>
+<script src='/js/faq.js'></script>
 
 </html>
