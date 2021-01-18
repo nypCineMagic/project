@@ -9,24 +9,32 @@
 
 <body>
         <h1>CineMagic</h1>
-    <style>
-        .protectedSection,.unprotectedSection {
-            display: none;
-        }
-    </style>
+        <style>
+                .protectedSection,
+                .unprotectedSection {
+                        display: none;
+                }
+        </style>
         <header>
                 <nav>
                         <li><a href="/">Home Page</a></li>
                         <li><a href="/recommend">Movie Recommendation</a></li>
-                        <li><a href="/viewProfile">View Profile</a></li>
-                        <li><a href="/cart">Cart</a></li>
+                        <li>
+                                <section class="protectedSection"><a href="/cart">Cart</a></section>
+                        </li>
+                        <li>
+                                <section class="protectedSection"><a href="/viewProfile">View Profile</a></section>
+                        </li>
+                        <li>
+                                <section class="protectedSection"><a href="/buyTicket">Buy Ticket</a></section>
+                        </li>
                         <li><a href="#" class="logoutLink">Logout</a></li>
                 </nav>
         </header>
         <h3>Edit Profile</h3>
         <section>
                 <form onsubmit="return editUser();">
-                    <!-- make sure data valid before 
+                        <!-- make sure data valid before 
                         submitting thats why got editProfile.js -->
                         <label for="name">Name:</label>
                         <input type="text" id="name" name="name">
