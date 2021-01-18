@@ -75,6 +75,13 @@ var routes = function () {
     router.get('/faq', function (req, res) {
         res.sendFile(__dirname + "/views/faq.html");
     });
+    router.post('/faqs', function (req, res) {
+        var data = req.body;
+        db.addFaq(data.inquiry,
+            function (err, faq){
+                res.redirect('back');
+            })
+    });
     //for recommended movies page
     router.get('/recommend', function (req, res) {
         res.sendFile(__dirname + "/views/recommend.html");
