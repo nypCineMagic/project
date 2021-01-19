@@ -181,10 +181,12 @@ var routes = function () {
     })
     //add to cart
     router.post('/cart', function(req, res){
+        var id = req.query.id
         var data = req.body;
         console.log(data);
         console.log("Added to Cart");
-        db.addCart(data.name, data.location, data.time, data.price, data.noOfTicket, data.title,
+        //positioning matters
+        db.addCart(data.name, data.location, data.time, data.price, data.noOfTicket, data.title, id,
             function(err, cart){
                 if(err){
                     res.status(500).send("Unable to add to cart");
@@ -226,7 +228,7 @@ var routes = function () {
             }
         })
     })
-
+    //get user by id
     router.get('/user/:id', function(req, res){
         var id = req.params.id;
         console.log(id);
@@ -251,10 +253,6 @@ var routes = function () {
             }
         })
     })
-    // //get movie
-    // router.get('/movie', function(req, res){
-    //     res.send(movieController.getMovie());
-    // })
 
     //register user
     router.post('/register', function (req, res) {

@@ -24,7 +24,7 @@ $(document).ready(function () {
                         
                         </article>
                     `);
-                })
+               
                 
             }
             
@@ -34,3 +34,4 @@ $(document).ready(function () {
                 console.log(err.responseText);
             }
         )
+    })

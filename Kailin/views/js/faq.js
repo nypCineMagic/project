@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $.ajax({
-        url: "/faqs",
+        url: "/faq",
         method: "get"
     })
         .done(

@@ -61,6 +61,7 @@ var database = {
                     price: String,
                     noOfTicket: Number,
                     title: String,
+                    userId: String,
                     
                 });
 
@@ -72,7 +73,7 @@ var database = {
                 movieModel = connection.model('movie', movieSchema);
                 userModel = connection.model('users', userSchema);
                 ticketModel = connection.model('tickets', ticketSchema);
-                cartModel = connection.model('cart', cartSchema);
+                cartModel = connection.model('carts', cartSchema);
                 seatModel = connection.model('seat', seatSchema);
                 faqModel = connection.model('faqs', faqSchema);
             } else {
@@ -85,18 +86,19 @@ var database = {
     getAllCart: function(callback){
         cartModel.find({}, callback);
     },
-    getCart: function (id, callback) {
-        cartModel.findById(id, callback);
+    getCart: function ({userId:id}, callback) {
+        cartModel.findOne({userId:id}, callback);
     },
     //add to cart
-    addCart: function (n, l, ti, p, not, t, callback) {
+    addCart: function (n, l, ti, p, not, t, u, callback) {
         var newCart = new cartModel ({
             name: n,
             location: l,
             time: ti,
             price: p,
             noOfTicket: not,
-            title: t
+            title: t,
+            userId: u
         });
         newCart.save(callback);
     },
