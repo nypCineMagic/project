@@ -9,7 +9,7 @@ $(document).ready(function() {
         url: "/movie/" + movieId,
         method: "get"
     }).done(
-        function (data) {
+        function (movie) {
             
                 $(".moviedetails").append(`
                     <article>
