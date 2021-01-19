@@ -1,27 +1,28 @@
 $(document).ready(function () {
+    // ?token=" + sessionStorage.authToken
     $.ajax({
-        url: "/cart?token=" + sessionStorage.authToken,
+        url: "/cart",
         method: "get"
     })
         .done(
-            function (data) {
+            function (cart) {
                 // data.forEach(function(data) {
                     $(".cart").append(`
                         <article>
-                        <h2>${data.name} - cart</h2>
+                        <h2>${cart.name} - cart</h2>
                         <div>
-                            Title: ${data.title}<br>
-                            Location: ${data.location}<br>
-                            Time of Movie${data.time}<br>
-                            Number of Tickets bought: ${data.noOfTicket}<br>
-                            Price of Ticket${data.price}<br>
+                            Title: ${cart.title}<br>
+                            Location: ${cart.location}<br>
+                            Time of Movie${cart.time}<br>
+                            Number of Tickets bought: ${cart.noOfTicket}<br>
+                            Price of Ticket${cart.price}<br>
                         </div>
                         </article>
                     `);
-                });
+                // });
             }
             
-        )
+        ) // the end of function
         .fail(
             function (err) {
                 console.log(err.responseText);
@@ -31,7 +32,7 @@ $(document).ready(function () {
             $(".buyTickets").show();
         })
 
-// })
+ })
 
 function addToCart() {
     var newCart = {

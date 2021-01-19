@@ -81,30 +81,7 @@ var database = {
         })
     },
 
-    // reserveSeat = function({seats, name}, callback){
-    //     Seat.updateMany({_id: {$in: seats}},{reserved: true, name: name}, callback);
-    // },
-
-    // addMany = function({seatsArray, name}, callback){
-    //     Seat.insertMany(seatsArray, callback);
-    // },
-
-    //get seat status
-    // getSeatStatus: function(callback) {
-    //     seatModel.find({}, callback);
-    // },
-    // used to create seat info
-    // getSeatInfo: function(callback) {
-    //     seatModel.find({}, callback);
-    // },
-    //update seat id
-    // updateSeat: function (id, rN, r, callback) {
-    //     var updatedSeat = {
-    //         rowNo: rN,
-    //         reserved: r
-    //     };
-    //     seatModel.findByIdAndUpdate(id, updatedSeat, callback);
-    // },
+    
     getAllCart: function(callback){
         cartModel.find({}, callback);
     },
@@ -200,3 +177,28 @@ var database = {
 };
 
 module.exports = database;
+
+// reserveSeat = function({seats, name}, callback){
+    //     Seat.updateMany({_id: {$in: seats}},{reserved: true, name: name}, callback);
+    // },
+
+    // addMany = function({seatsArray, name}, callback){
+    //     Seat.insertMany(seatsArray, callback);
+    // },
+
+    //get seat status
+    // getSeatStatus: function(callback) {
+    //     seatModel.find({}, callback);
+    // },
+    // used to create seat info
+    // getSeatInfo: function(callback) {
+    //     seatModel.find({}, callback);
+    // },
+    //update seat id
+    // updateSeat: function (id, rN, r, callback) {
+    //     var updatedSeat = {
+    //         rowNo: rN,
+    //         reserved: r
+    //     };
+    //     seatModel.findByIdAndUpdate(id, updatedSeat, callback);
+    // },

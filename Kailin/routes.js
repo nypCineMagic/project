@@ -142,11 +142,11 @@ var routes = function () {
 
     //get items from cart
     router.get('/cart', function(req, res){
-        db.getAllCart(function(err, carts){
+        db.getAllCart(function(err, cart){
             if (err) {
                 res.status(500).send("Unable to find Cart");
             } else {
-                res.status(200).send(carts);
+                res.status(200).send(cart);
             }
         })
     })
@@ -154,12 +154,12 @@ var routes = function () {
     router.get('/cart/:id', function(req, res){
         var id = req.params.id;
         console.log(id);
-        db.getCart(id, function(err, carts){
+        db.getCart(id, function(err, cart){
             if (err) {
                 res.status(500).send("Unable to find any items in this cart");
             } else {
-                res.status(200).send(carts);
-                console.log(carts);
+                res.status(200).send(cart);
+                console.log(cart);
             }
         })
     })
