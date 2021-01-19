@@ -175,7 +175,11 @@ var database = {
             inquiry: i
         });
         newFaq.save(callback);
-    }
+    },
+    getAllRMovies: function(callback){
+        movieModel.find({}, callback);
+    },
+
 };
 
 module.exports = database;

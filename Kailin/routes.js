@@ -182,6 +182,7 @@ var routes = function () {
     //add to cart
     router.post('/cart', function(req, res){
         var id = req.query.id
+        console.log(id);
         var data = req.body;
         console.log(data);
         console.log("Added to Cart");
@@ -310,6 +311,7 @@ var routes = function () {
             res.send(movies);
         })
     })
+
 
     return router;
 };
