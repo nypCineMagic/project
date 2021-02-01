@@ -42,6 +42,10 @@ var routes = function () {
         res.sendFile(__dirname + "/views/index.html");
     });
 
+    router.get('/checkout', function (req, res) {
+        res.sendFile(__dirname + "/views/checkOut.html");
+    });
+
     //Movie details route
     router.get('/moviedetail', function (req, res) {
         res.sendFile(__dirname + "/views/moviedetail.html");

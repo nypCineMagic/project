@@ -10,8 +10,9 @@ $(document).ready(function () {
                     $(".cart").append(`
                         <article>
                         <p hidden>${data.userId}</p>
-                        <h2><a${data.name} - cart</h2>
+                        
                         <div>
+                        Name: ${data.name}<br>
                             Title: ${data.title}<br>
                             Location: ${data.location}<br>
                             Time of Movie: ${data.time}<br>
