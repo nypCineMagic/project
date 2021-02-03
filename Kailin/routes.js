@@ -1,8 +1,7 @@
 var bodyParser = require('body-parser');
 var crypto = require('crypto');
 var db = require('./services/dataservice.js');
-var movieController = require('./controllers/movieController.js');
-const {updateUser} = require('./services/dataservice.js');
+const { updateUser } = require('./services/dataservice.js');
 
 db.connect();
 //router defining db connection
@@ -14,12 +13,12 @@ var routes = function () {
     }));
 
     // allow people to do listing
-    
-    router.use(function(req,res,next){
+
+    router.use(function (req, res, next) {
         //only check for token if it is PUT, DELETE methods or it is POSTING to movie
-        if(req.method=="PUT" || req.method=="DELETE"
-            || (req.method=="POST" && req.url.includes("/movie") 
-            && req.url.includes("/users") && req.url.includes("/user"))) {
+        if (req.method == "PUT" || req.method == "DELETE"
+            || (req.method == "POST" && req.url.includes("/movie")
+                && req.url.includes("/users") && req.url.includes("/user"))) {
             var token = req.query.token;
             if (token == undefined) {
                 res.status(401).send("No tokens are provided. You are not allowed to perform this action.");
@@ -28,6 +27,9 @@ var routes = function () {
                     if (err || user == null) {
                         res.status(401).send("[Invalid token] You are not allowed to perform this action.");
                     } else {
+                        // temp storage
+                        // res.locals.movie = movie;
+                        res.locals.user = user;
                         //means proceed on with the request.
                         next();
                     }
@@ -40,6 +42,22 @@ var routes = function () {
 
     router.get('/', function (req, res) {
         res.sendFile(__dirname + "/views/index.html");
+    });
+
+    router.get('/croodDetail', function (req, res) {
+        res.sendFile(__dirname + "/views/croodDetail.html");
+    });
+
+    router.get('/neverlandDetail', function (req, res) {
+        res.sendFile(__dirname + "/views/neverlandDetail.html");
+    });
+
+    router.get('/rescueDetail', function (req, res) {
+        res.sendFile(__dirname + "/views/rescueDetail.html");
+    });
+
+    router.get('/wonderDetail', function (req, res) {
+        res.sendFile(__dirname + "/views/wonderDetail.html");
     });
 
     router.get('/checkout', function (req, res) {
@@ -82,7 +100,7 @@ var routes = function () {
     router.post('/faqs', function (req, res) {
         var data = req.body;
         db.addFaq(data.inquiry,
-            function (err, faq){
+            function (err, faq) {
                 res.redirect('back');
             })
     });
@@ -91,13 +109,13 @@ var routes = function () {
         res.sendFile(__dirname + "/views/recommend.html");
     });
     router.get('/movies', function (req, res) {
-        db.getAllRMovies(function (err, movies){
+        db.getAllRMovies(function (err, movies) {
             res.send(movies);
         });
     })
     //for ticket page
     router.get('/tickets', function (req, res) {
-        db.getAllTickets(function (err, tickets){
+        db.getAllTickets(function (err, tickets) {
             res.send(tickets);
         });
     })
@@ -109,18 +127,18 @@ var routes = function () {
         });
     })
 
-    router.get('/css/*', function(req, res)  {
-        res.sendFile(__dirname+"/views/"+req.originalUrl);
+    router.get('/css/*', function (req, res) {
+        res.sendFile(__dirname + "/views/" + req.originalUrl);
     });
-    
-    router.get('/js/*', function(req, res)  {
-        res.sendFile(__dirname+"/views/"+req.originalUrl);
+
+    router.get('/js/*', function (req, res) {
+        res.sendFile(__dirname + "/views/" + req.originalUrl);
     });
-    
+
     //search movie by title
     router.post('/movies/title', function (req, res) {
         var title = req.body.title;
-        db.searchMovieByTitle(title,function(err,movie) {
+        db.searchMovieByTitle(title, function (err, movie) {
             if (err) {
                 res.status(500).send("unable to find movie with this title");
             } else {
@@ -130,23 +148,13 @@ var routes = function () {
 
     });
 
-    // router.put('/seat', function(req, res){
-    //     console.log("update seats");
-    //     var data = req.body;
-    //     db.updateSeat(data.id, data.rowNo, data.reserved,
-    //         function(err, seat){
-    //             res.end();
-    //         });
+    router.get('/checkout', function (req, res) {
 
-    // });
-
-    router.get('/checkout', function(req, res){
-        
     });
 
     //get items from cart
-    router.get('/cart', function(req, res){
-        db.getAllCart(function(err, cart){
+    router.get('/cart', function (req, res) {
+        db.getAllCart(function (err, cart) {
             if (err) {
                 res.status(500).send("Unable to find Cart");
             } else {
@@ -155,10 +163,10 @@ var routes = function () {
         })
     })
     //get item by id
-    router.get('/cart/:id', function(req, res){
+    router.get('/cart/:id', function (req, res) {
         var id = req.params.id;
         console.log(id);
-        db.getCart(id, function(err, cart){
+        db.getCart(id, function (err, cart) {
             if (err) {
                 res.status(500).send("Unable to find any items in this cart");
             } else {
@@ -184,25 +192,38 @@ var routes = function () {
         });
     })
     //add to cart
-    router.post('/cart', function(req, res){
-        var id = req.query.id
-        console.log(id);
+    router.post('/cart', function (req, res) {
         var data = req.body;
         console.log(data);
-        console.log("Added to Cart");
-        //positioning matters
-        db.addCart(data.name, data.location, data.time, data.price, data.noOfTicket, data.title, id,
-            function(err, cart){
-                if(err){
-                    res.status(500).send("Unable to add to cart");
-                }else{
-                    res.status(200).send("Successfully added to cart");
+        var id = req.params._id;
+        // var userId = sessionStorage._id;
+        // // var movieId = res.locals.movie._id; 
+        // console.log(userId);
+        var token = req.query.token;
+        console.log(token);
+        if (token == undefined) {
+            res.status(401).send("No tokens are provided");
+        } else {
+            db.checkToken(token, function (err, user) {
+                if (err || user == null) {
+                    res.status(401).send("Invalid token provided");
+                } else {
+                    db.addCart(data.title, data.location, data.time, data.quantity, data.price,id,
+                        function (err, cart) {
+                            if (err) {
+                                res.status(500).send("Unable to add to Cart");
+                            } else {
+                                res.status(200).send("Successfully added to cart");
+                            }
+                        })
                 }
             })
+
+        }
     });
     //checkout
-    router.get('/checkout', function(req, res){
-        
+    router.get('/checkout', function (req, res) {
+
     });
     //update user
     router.put('/user', function (req, res) {
@@ -214,8 +235,8 @@ var routes = function () {
             });
     })
     //get user
-    router.get('/user', function(req, res){
-        db.getAllUser(function(err, user){
+    router.get('/user', function (req, res) {
+        db.getAllUser(function (err, user) {
             if (err) {
                 res.status(500).send("Unable to find user with this id");
             } else {
@@ -224,8 +245,8 @@ var routes = function () {
         })
     })
 
-    router.get('/movie', function(req, res){
-        db.getAllMovies(function(err, movie){
+    router.get('/movie', function (req, res) {
+        db.getAllMovies(function (err, movie) {
             if (err) {
                 res.status(500).send("Unable to find movie");
             } else {
@@ -234,10 +255,10 @@ var routes = function () {
         })
     })
     //get user by id
-    router.get('/user/:id', function(req, res){
+    router.get('/user/:id', function (req, res) {
         var id = req.params.id;
         console.log(id);
-        db.getUser(id, function(err, user){
+        db.getUser(id, function (err, user) {
             if (err) {
                 res.status(500).send("Unable to find user with this id");
             } else {
@@ -247,10 +268,10 @@ var routes = function () {
         })
     })
 
-    router.get('/movie/:id', function(req, res){
+    router.get('/movie/:id', function (req, res) {
         var id = req.params.id;
         console.log(id);
-        db.getMovie(id, function(err, movie){
+        db.getMovie(id, function (err, movie) {
             if (err) {
                 res.status(500).send("Unable to find movie");
             } else {
@@ -284,11 +305,17 @@ var routes = function () {
                     var strToHash = user.name + Date.now();
                     var token = crypto.createHash('md5').update(strToHash).digest('hex');
                     db.updateToken(user._id, token, function (err, user) {
-                        res.status(200).json({ 'message': 'Login successful.', 'token': token , 'Id': user._id});
+                        res.status(200).json({ 'message': 'Login successful.', 'token': token, 'Id': user._id });
                     });
                 }
             }
-            
+
+        })
+    })
+
+    router.get('/movies', function (req, res) {
+        db.getAllRecommendMovies(function (err, movies) {
+            res.send(movies);
         })
     })
 
@@ -310,11 +337,7 @@ var routes = function () {
         }
     })
 
-    router.get('/movies', function (req, res) {
-        db.getAllRecommendMovies(function (err, movies) {
-            res.send(movies);
-        })
-    })
+
 
 
     return router;

@@ -30,8 +30,6 @@ $(document).ready(function() {
         function (err) {
             console.log(err.responseText);
         }
-    );
-});
+    )
+})
 
-    
-   

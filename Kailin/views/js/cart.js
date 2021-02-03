@@ -1,22 +1,21 @@
 $(document).ready(function () {
     // ?token=" + sessionStorage.authToken
     $.ajax({
-        url: "/cart?id=" + sessionStorage.Id,
+        url: "/cart?token=" + sessionStorage.authToken,
         method: "get"
     })
         .done(
             function (data) {
+                // Title: ${data.movie.title}<br></br>
                 // data.forEach(function(cart) {
                     $(".cart").append(`
                         <article>
-                        <p hidden>${data.userId}</p>
-                        
                         <div>
-                        Name: ${data.name}<br>
-                            Title: ${data.title}<br>
+                        Total Price : (${data.price} * ${data.quantity})<br>
+                            Movie Title: ${data.title}<br>
                             Location: ${data.location}<br>
                             Time of Movie: ${data.time}<br>
-                            Number of Tickets bought: ${data.noOfTicket}<br>
+                            Quantity: ${data.quantity}<br>
                             Price of Ticket: ${data.price}<br>
                         </div>
                         </article>
@@ -36,30 +35,3 @@ $(document).ready(function () {
 
  })
 
-// function addToCart() {
-//     var newCart = {
-//         // userId: $("#userId").val(),
-//         name: $("#name").val(),
-//         title: $("#title").val(),
-//         location: $("#location").val(),
-//         time: $("#time").val(),
-//         noOfTicket: $("#noOfTicket").val(),
-//         price: $("#price").val()
-//     };
-
-//     $.ajax({
-//         url:"/cart?id="+sessionStorage.Id,
-//         method:"POST",
-//         data: newCart
-//     })
-//     .done(function(data){
-//         $(".statusMessage").text(data);
-//         setTimeout(function(){
-//             location.reload();
-//         },3000);
-//     })
-//     .fail(function(err){
-//         $(".statusMessage").text("Unable to add into cart");
-//     })
-//     return false;
-// }

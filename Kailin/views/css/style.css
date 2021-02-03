@@ -1,12 +1,32 @@
 h1 {
     color:red;
 }
+ul, li{
+    list-style: none;
+}
 h2{
     color: darkblue;
+}
+a{
+    text-decoration: none;
 }
 
 /* .seatViewing {
     display:none;
+} */
+
+footer{
+    text-align: center;
+}
+
+
+
+/* .price span{
+    color: green;
+    background: #f4f4f4;
+    padding: 10px;
+    border: 1px #ccc solid;
+    border-radius: 50%;
 } */
 
 nav {

@@ -8,41 +8,98 @@
 <body>
     <h1>CineMagic</h1>
     <style>
-        .protectedSection,.unprotectedSection {
+        .protectedSection,
+        .unprotectedSection {
             display: none;
         }
     </style>
+
     <header>
         <nav>
-            <li><section class=""><a href="/">Home Page</a></section></li>
+            <li>
+                <section class=""><a href="/">Home Page</a></section>
+            </li>
             <li>
                 <section><a href="/recommend">Movie Recommendation</a></section>
             </li>
-            <li><section class="protectedSection"><a href="/cart">Cart</a></section></li>
+            <li>
+                <section class="protectedSection"><a href="/cart">Cart</a></section>
+            </li>
 
-            <li><section class="protectedSection"><a href="/viewProfile">View Profile</a></section></li>
+            <li>
+                <section class="protectedSection"><a href="/viewProfile">View Profile</a></section>
+            </li>
             <li>
                 <section class="protectedSection"><a href="/buyTicket">Buy Ticket</a></section>
             </li>
-            <li><section class="unprotectedSection"><a href="/login">Login</a></section></li>
-            <li><section class="unprotectedSection"><a href="/register">Register User</a></section></li>
-            <li><section class="protectedSection"><a href="#" class="logoutLink">Logout</a></section></li>
+            <li>
+                <section class="unprotectedSection"><a href="/login">Login</a></section>
+            </li>
+            <li>
+                <section class="unprotectedSection"><a href="/register">Register User</a></section>
+            </li>
+            <li>
+                <section class="protectedSection"><a href="#" class="logoutLink">Logout</a></section>
+            </li>
         </nav>
     </header>
-    
+
+
     <section>
         <!-- search movie -->
-            <input type="text" placeholder="Movie Title" id="title" name="title">
-            <input type="submit" class="searchBtn" value="Search Movie">
+        <input type="text" placeholder="Movie Title" id="title" name="title">
+        <input type="submit" class="searchBtn" value="Search Movie">
     </section>
     <br>
+    
     <section class="movieResult">
-        
+
     </section>
     <hr>
-    <section class="movie">
-    </section>
-    
+    <br>
+    <h2>Buy Movie Ticket</h2>
+    <form onsubmit="return addToCart();">
+        <label for="movietitle">Movie Title: </label>
+        <select id="mtitle">
+            <option value="Wonder Women 1984">Wonder Women 1984</option>
+            <option value="The Promised Neverland">The Promised Neverland</option>
+            <option value="The Croods">The Crods - A New Age</option>
+            <option value="The Rescue">The Rescue</option>
+        </select>
+        <br><br>
+        <label for="location">Cinema Location :</label>
+            <select id="location" name="location">
+                <option value="Funan">Funan</option>
+            </select>
+            <br><br>
+            <label for="time">Movie Time:</label>
+            <select id="time" name="time">
+                <option value="7.50pm">7.50pm</option>
+                <!-- <option value="adult">$13.50</option> -->
+            </select>
+            <br>
+            <p><b>Due to Covid, we will be organising your seats for you</b></p>
+            <label for="quantity">No. Of People :</label>
+            <select id="quantity" name="quantity">
+                <option value="1">1</option>
+            </select>
+            <br>
+            <br>
+            <p><b>Student Price : $7.00</b></p>
+            <p><b>Adult Price : $13.50</b></p>
+            <label for="price">Price of Ticket :</label>
+            <select id="price" name="price">
+                <option value="$7">$7</option>
+                <!-- <option value="adult">$13.50</option> -->
+            </select>
+            <br>
+            <br>
+            <input type="submit" value="Add to Movie Cart"></a>
+        
+        
+    </form>
+    <br>
+    <div class="statusMessage"></div>
     <br>
     <hr>
     <footer>
@@ -50,7 +107,7 @@
             CineMagic &copy; 2021 | <a href="/faq">FAQs & Enquiries</a>
         </p>
     </footer>
-    
+
     <script src='/js/jquery.min.js'></script>
     <script src='/js/auth.js'></script>
     <script src='/js/index.js'></script>

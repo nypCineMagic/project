@@ -1,8 +1,8 @@
-var movieController = {
-    movie: [], 
-    getMovie: function() {
-        return this.movie;
-    },
-};
+// var movieController = {
+//     movie: [], 
+//     getMovie: function() {
+//         return this.movie;
+//     },
+// };
 
-module.exports=movieController;
+// module.exports=movieController;

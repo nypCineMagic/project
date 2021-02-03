@@ -4,10 +4,9 @@ var schema = mongoose.Schema;
 var movieSchema = {};
 var userSchema = {};
 var ticketSchema = {};
-var seatSchema = {};
 var cartSchema = {};
 var faqSchema = {};
-var movieModel, userModel, cartModel, seatModel, ticketModel, faqModel;
+var movieModel, userModel, cartModel, ticketModel, faqModel;
 
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -48,20 +47,18 @@ var database = {
                     description: String
                 });
 
-                seatSchema = schema({
-                    rowNo: String,
-                    reserved: Boolean,
-                });
-
-                // need to referenece movie to movie schema
                 cartSchema = schema({
-                    name: String,
                     location: String,
                     time: String,
                     price: String,
-                    noOfTicket: Number,
+                    quantity: String,
                     title: String,
-                    userId: String,
+
+                    user: { 
+                        // ref title
+                        type: schema.Types.ObjectId,
+                        ref: 'users'
+                    }
                     
                 });
 
@@ -70,11 +67,10 @@ var database = {
                 });
 
                 var connection = mongoose.connection;
-                movieModel = connection.model('movie', movieSchema);
+                movieModel = connection.model('movies', movieSchema);
                 userModel = connection.model('users', userSchema);
                 ticketModel = connection.model('tickets', ticketSchema);
                 cartModel = connection.model('carts', cartSchema);
-                seatModel = connection.model('seat', seatSchema);
                 faqModel = connection.model('faqs', faqSchema);
             } else {
                 console.log("Error connecting to Mongo DB");
@@ -86,19 +82,20 @@ var database = {
     getAllCart: function(callback){
         cartModel.find({}, callback);
     },
-    getCart: function ({userId:id}, callback) {
-        cartModel.findOne({userId:id}, callback);
+    // get cart
+    getCart: function (id, callback) {
+        cartModel.findById(id).populate('movie', 'title').populate('user', 'name').exec(callback);
     },
     //add to cart
-    addCart: function (n, l, ti, p, not, t, u, callback) {
+    addCart: function (ti,l, t, p, q, uid, callback) {
         var newCart = new cartModel ({
-            name: n,
+            title: ti,
             location: l,
-            time: ti,
+            time: t,
             price: p,
-            noOfTicket: not,
-            title: t,
-            userId: u
+            quantity: q,
+            user: uid,
+            
         });
         newCart.save(callback);
     },
@@ -183,28 +180,3 @@ var database = {
 };
 
 module.exports = database;
-
-// reserveSeat = function({seats, name}, callback){
-    //     Seat.updateMany({_id: {$in: seats}},{reserved: true, name: name}, callback);
-    // },
-
-    // addMany = function({seatsArray, name}, callback){
-    //     Seat.insertMany(seatsArray, callback);
-    // },
-
-    //get seat status
-    // getSeatStatus: function(callback) {
-    //     seatModel.find({}, callback);
-    // },
-    // used to create seat info
-    // getSeatInfo: function(callback) {
-    //     seatModel.find({}, callback);
-    // },
-    //update seat id
-    // updateSeat: function (id, rN, r, callback) {
-    //     var updatedSeat = {
-    //         rowNo: rN,
-    //         reserved: r
-    //     };
-    //     seatModel.findByIdAndUpdate(id, updatedSeat, callback);
-    // },
