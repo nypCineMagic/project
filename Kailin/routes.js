@@ -3,6 +3,8 @@ var crypto = require('crypto');
 var db = require('./services/dataservice.js');
 const { updateUser } = require('./services/dataservice.js');
 
+
+
 db.connect();
 //router defining db connection
 var routes = function () {
@@ -27,9 +29,10 @@ var routes = function () {
                     if (err || user == null) {
                         res.status(401).send("[Invalid token] You are not allowed to perform this action.");
                     } else {
+                        
                         // temp storage
-                        // res.locals.movie = movie;
-                        res.locals.user = user;
+                        res.locals.movie = movie;
+                        // res.locals.user = user;
                         //means proceed on with the request.
                         next();
                     }
@@ -153,12 +156,20 @@ var routes = function () {
     });
 
     //get items from cart
+    // router.get('/cart', function (req, res) {
+    //     db.getAllCarts(function (err, carts) {
+    //         res.send(carts);
+    //     })
+    // });
     router.get('/cart', function (req, res) {
+        console.log("getcart");
         db.getAllCart(function (err, cart) {
+            console.log(cart);
             if (err) {
                 res.status(500).send("Unable to find Cart");
             } else {
                 res.status(200).send(cart);
+                console.log(cart);
             }
         })
     })
@@ -195,32 +206,23 @@ var routes = function () {
     router.post('/cart', function (req, res) {
         var data = req.body;
         console.log(data);
-        var id = req.params._id;
+        // var movieId = req.params._id;
         // var userId = sessionStorage._id;
-        // // var movieId = res.locals.movie._id; 
-        // console.log(userId);
-        var token = req.query.token;
-        console.log(token);
-        if (token == undefined) {
-            res.status(401).send("No tokens are provided");
-        } else {
-            db.checkToken(token, function (err, user) {
-                if (err || user == null) {
-                    res.status(401).send("Invalid token provided");
+        // var movieId = res.locals.movie._id;
+        // console.log(movieId);
+
+        db.addCart(data.movietitle, data.location, data.time, data.quantity, data.price,
+            function (err, cart) {
+                if (err) {
+                    res.status(500).send("Unable to add to Cart");
                 } else {
-                    db.addCart(data.title, data.location, data.time, data.quantity, data.price,id,
-                        function (err, cart) {
-                            if (err) {
-                                res.status(500).send("Unable to add to Cart");
-                            } else {
-                                res.status(200).send("Successfully added to cart");
-                            }
-                        })
+                    res.status(200).send("Successfully added to cart");
                 }
             })
 
-        }
     });
+
+
     //checkout
     router.get('/checkout', function (req, res) {
 

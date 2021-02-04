@@ -27,26 +27,22 @@
             <li><a href="#" class="logoutLink">Logout</a></li>
         </nav>
     </header>
-    <h2>Check Out </h2>
-    <h4>Your Total: $</h4>
+    <div class="creditCardForn">
+    <h2>Confirm Purchase </h2>
+    <h4>Only Visa is Supported</h4>
+
+    <form class="form" onsubmit="return Success();">
+        <h3>Credit Card Number</h3>
+        <input type="text" class="cc-number" pattern="\d*" x-autocompletetype="cc-number" placeholder="4234-5678-9101-1121" pattern="[4]{1}[0-9]{3}-[0-9]{4}-[0-9]{4}-[0-9]{4}" maxlength="19" required>
+        <h3>Expiry Date</h3>
+        <input type="text" class="cc-exp" pattern="\d*" x-autocompletetype="cc-exp" placeholder="MM/20YY" pattern="[0-1]{1}[1-2]{1}/[2]{1}[0]{1}[1-9]{2}" maxlength="7" required>
+        <h3>CVC</h3>
+        <input type="text" class="cc-cvc" pattern="\d*" x-autocompletetype="cc-cvc" placeholder="123" pattern="[0-9]{3}" maxlength="3" required>
+        <br><br>
+        <button type="submit">Submit</button>
+      </form>
     
-    <!-- will use ticket db -->
-    <section class="checkOut">
-        <form action="/ticket" method="post" id="checkoutForm">
-            <label for="name">Name:</label>
-            <input type="text" id="name" class="payment" required><br>
-            <label for="cardNumber">Credit Card Number:</label>
-            <input type="text" id="cardNumber" class="payment" required><br>
-            <label for="expireMonth">Expiration Month:</label>
-            <input type="text" id="expireMonth" class="payment" required><br>
-            <label for="expireYear">Expiration Month:</label>
-            <input type="text" id="expireYear" class="payment" required><br>
-            <label for="CVC">CVC:</label>
-            <input type="text" id="CVC" class="payment" required><br><br>
-            <button type="submit" class="buyNow">Buy Now</button>
-        </form>
-    </section>
-    
+    </div>
     <hr>
     <footer>
         <p>
@@ -55,8 +51,7 @@
     </footer>    
     <script src='/js/jquery.min.js'></script>
     <script src='/js/auth.js'></script>
-    <script src='/js/index.js'></script>
-    <script src='js/viewProfile.js'></script>
+    <script src='js/checkout.js'></script>
 </body>
 
 </html>

@@ -10,9 +10,12 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "creditcard.js": "^3.0.3",
     "crypto": "^1.0.1",
     "express": "^4.17.1",
     "moment": "^2.29.1",
-    "mongoose": "^5.11.14"
+    "mongoose": "^5.11.14",
+    "pug": "^3.0.0",
+    "stripe": "^8.133.0"
   }
 }

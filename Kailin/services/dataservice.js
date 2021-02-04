@@ -48,17 +48,11 @@ var database = {
                 });
 
                 cartSchema = schema({
+                    movietitle : String,
                     location: String,
                     time: String,
                     price: String,
-                    quantity: String,
-                    title: String,
-
-                    user: { 
-                        // ref title
-                        type: schema.Types.ObjectId,
-                        ref: 'users'
-                    }
+                    quantity: String
                     
                 });
 
@@ -84,17 +78,16 @@ var database = {
     },
     // get cart
     getCart: function (id, callback) {
-        cartModel.findById(id).populate('movie', 'title').populate('user', 'name').exec(callback);
+        cartModel.findById(id,callback);
     },
     //add to cart
-    addCart: function (ti,l, t, p, q, uid, callback) {
+    addCart: function (ti,l, t, p, q, callback) {
         var newCart = new cartModel ({
-            title: ti,
+            movietitle: ti,
             location: l,
             time: t,
             price: p,
-            quantity: q,
-            user: uid,
+            quantity: q
             
         });
         newCart.save(callback);
