@@ -14,11 +14,11 @@ $(document).ready(function () {
                         <article>
                         <h2><a href="/edit?id=${ticket._id}">${ticket.title}</a></h2>
                         <div>
-                            ${ticket.name}<br>
-                            ${ticket.price}<br>
-                            ${ticket.title}<br>
-                            ${ticket.description}<br>
+                            Name: ${ticket.name}<br>
+                            Price: ${ticket.price}<br>
+                            Title: ${ticket.title}<br>
                         </div>
+                        <button class="deleteTicketBtn" ticket-id=${ticket.id}>Delete Ticket</button>
                         </article>
                     `);
                 })
@@ -31,11 +31,13 @@ $(document).ready(function () {
         )
 })
 
-$(".deleteTicketBtn").on('click', function() {
+$(".deleteTicketBtn").on('click', function(button) {
+    var ticketId = $(button).attr('ticket-id');
     $.ajax(
         {
-            url: '/tickets/'+ticketId,
-            method: 'delete'
+            method: "POST",
+            url: '/tickets/delete',
+            data: {"ticketId": ticketId},
         }
     ).done(
         function (data) {
