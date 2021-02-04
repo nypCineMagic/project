@@ -113,7 +113,7 @@ var routes = function () {
     });
     router.get('/movies', function (req, res) {
         db.getAllRMovies(function (err, movies) {
-            res.send(movies);
+            res.send(movies.sort((a,b) => b.rating - a.rating));
         });
     })
     //for ticket page
