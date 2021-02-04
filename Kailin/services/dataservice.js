@@ -27,7 +27,8 @@ var database = {
                     runningTime: String,
                     director: String,
                     cast: String,
-                    description: String
+                    description: String,
+                    rating: Number
                 });
 
                 userSchema = schema({
