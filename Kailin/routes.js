@@ -123,11 +123,11 @@ var routes = function () {
         });
     })
 
-    router.delete('/tickets/:id', function (req, res) {
-        var id = req.params.id;
-        db.deleteTicket(id, function (err, ticket) {
-            res.end();
-        });
+    router.post('/tickets/delete', function (req, res) {
+        var ticketId = req.body.ticketId || req.query.ticketId;
+        ticketSchema.remove({_id: ticketId}, function(err, res) {
+            if(err) {res.json({"err": err});} else {res.json({sucess: true});
+        }})
     })
 
     router.get('/css/*', function (req, res) {
