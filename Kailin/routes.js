@@ -75,9 +75,9 @@ var routes = function () {
     router.get('/viewProfile', function (req, res) {
         res.sendFile(__dirname + "/views/viewProfile.html");
     });
-    router.get('/cart', function (req, res) {
-        res.sendFile(__dirname + "/views/cart.html");
-    });
+    // router.get('/cart', function (req, res) {
+    //     res.sendFile(__dirname + "/views/cart.html");
+    // });
     router.get('/faq', function (req, res) {
         res.sendFile(__dirname + "/views/faq.html");
     });

@@ -65,7 +65,7 @@ var database = {
                 movieModel = connection.model('movies', movieSchema);
                 userModel = connection.model('users', userSchema);
                 ticketModel = connection.model('tickets', ticketSchema);
-                cartModel = connection.model('cart', cartSchema);
+                cartModel = connection.model('carts', cartSchema);
                 faqModel = connection.model('faqs', faqSchema);
             } else {
                 console.log("Error connecting to Mongo DB");
@@ -86,7 +86,6 @@ var database = {
             name: n,
             price: p,
             title: t,
-            
             
         });
         newTicket.save(callback);

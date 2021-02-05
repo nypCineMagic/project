@@ -5,12 +5,12 @@ $(document).ready(function(){
     })
     .done(
         function(data){
+            console.log(data);
             // data.forEach(function(Cart){
             $(".cart").append(`
             <article>
             <div>
             Movie Title : ${data.movietitle}<br>
-            
             Location : ${data.location}<br>
             Time of Movie : ${data.time}<br>
             Price of Movie : ${data.price}<br>
