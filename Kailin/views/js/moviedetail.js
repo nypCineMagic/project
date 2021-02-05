@@ -21,6 +21,7 @@ $(document).ready(function() {
                         Director: ${movie.director}<br>
                         Cast: ${movie.cast}<br>
                         Description: ${movie.description}<br>
+                        Rating: ${movie.rating}<br>
                     </div>
                     </article>
                 `);
