@@ -4,19 +4,60 @@
         <title>Tickets</title>
         <link rel="stylesheet" href="/css/style.css">
     </head>
+
+<body>
+    <h1>CineMagic</h1>
+    <style>
+        .protectedSection,
+        .unprotectedSection {
+            display: none;
+        }
+    </style>
+    <header>
+        <nav>
+            <li>
+                <section class=""><a href="/">Home Page</a></section>
+            </li>
+            <li>
+                <a href="/recommend">Movie Recommendation</a>
+            </li>
+            <li><section class="protectedSection"><a href="/cart">Cart</a></section></li>
+
+            <li><section class="protectedSection"><a href="/viewProfile">View Profile</a></section></li>
+            <li>
+                <section class="protectedSection"><a href="/buyTicket">Buy Ticket</a></section>
+            </li>
+            <li>
+                <section class="protectedSection"><a href="/ticket">View E-Ticket</a></section>
+            </li>
+            <li>
+                <section class="unprotectedSection"><a href="/login">Login</a></section>
+            </li>
+            <li>
+                <section class="unprotectedSection"><a href="/register">Register User</a></section>
+            </li>
+            <li>
+                <section class="protectedSection"><a href="#" class="logoutLink">Logout</a></section>
+            </li>
+        </nav>
+    </header>
     
-    <body>
-        <h1>Tickets</h1>
+    <h2>Tickets</h2>
         <section class="tickets">
             
         </section>
     <br>
+    <hr>
     <footer>
         <p>
                 CineMagic &copy; 2021 | <a href="/faq">FAQs & Enquiries</a>
         </p>
 </footer>
-    <script src='/js/jquery.min.js'></script>
+
+<script src='/js/jquery.min.js'></script>
+<script src='/js/auth.js'></script>
+<script src='/js/faq.js'></script>
+
     <script src='/js/ticket.js'></script>
 </body>
 
