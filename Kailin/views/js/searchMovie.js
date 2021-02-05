@@ -21,7 +21,7 @@ $(document).ready(function () {
                             Genre: ${movieResult.genre}<br>
                             Language: ${movieResult.language}<br>
                             Running Time: ${movieResult.runningTime}<br>
-                        </div>
+                         </div>
                         </article>
                     `);
                 })

@@ -1,30 +1,24 @@
-// var J = Payment.J,
-//   numeric = document.querySelector('[data-numeric]'),
-//   number = document.querySelector('.cc-number'),
-//   exp = document.querySelector('.cc-exp'),
-//   cvc = document.querySelector('.cc-cvc'),
-//   validation = document.querySelector('.validation');
+function Success() {
+    var newTicket = {
+        name: $("#name").val(),
+        title: $("#title").val(),
+        price: $("#price").val(),
+        
+    };
 
-// Payment.restrictNumeric(numeric);
-// Payment.formatCardNumber(number);
-// Payment.formatCardExpiry(exp);
-// Payment.formatCardCVC(cvc);
-
-// document.querySelector('form').onsubmit = function(e) {
-//   e.preventDefault();
-//   J.toggleClass(document.querySelectorAll('input'), 'invalid');
-//   J.removeClass(validation, 'passed failed');
-
-//   var cardType = Payment.fns.cardType(J.val(number));
-
-//   J.toggleClass(number, 'invalid', !Payment.fns.validateCardNumber(J.val(number)));
-//   J.toggleClass(exp, 'invalid', !Payment.fns.validateCardExpiry(Payment.cardExpiryVal(exp)));
-
-//   J.toggleClass(cvc, 'invalid', !Payment.fns.validateCardCVC(J.val(cvc), cardType));
-
-//   if (document.querySelectorAll('.invalid').length) {
-//     J.addClass(validation, 'failed');
-//   } else {
-//     J.addClass(validation, 'passed');
-//   }
-// }
+    $.ajax({
+        url:"/ticket?token="+sessionStorage.authToken,
+        method:"POST",
+        data: newTicket
+    })
+    .done(function(data){
+        $(".statusMessage").text(data);
+        setTimeout(function(){
+            location.reload();
+        },3000);
+    })
+    .fail(function(err){
+        $(".statusMessage").text("Unable to buy ticket");
+    })
+    return false;
+}

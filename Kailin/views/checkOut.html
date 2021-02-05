@@ -24,6 +24,9 @@
             <li>
                 <section class="protectedSection"><a href="/buyTicket">Buy Ticket</a></section>
             </li>
+            <li>
+                <section class="protectedSection"><a href="/ticket">View E-Ticket</a></section>
+            </li>
             <li><a href="#" class="logoutLink">Logout</a></li>
         </nav>
     </header>
@@ -32,15 +35,37 @@
     <h4>Only Visa is Supported</h4>
 
     <form class="form" onsubmit="return Success();">
+        <h3>Name</h3>
+        <input type="text" id="name" placeholder="Name" required>
+        <br><br>
+        
+            <h3><label for="motitle">Please reconfirm the movie you're watching: </label></h3>
+            <select id="title">
+                <option value="Wonder Women 1984">Wonder Women 1984</option>
+                <option value="The Promised Neverland">The Promised Neverland</option>
+                <option value="The Croods">The Croods - A New Age</option>
+                <option value="The Rescue">The Rescue</option>
+            </select>
+            <br><br>
+            <h3><label for="price">Price of Ticket :</label></h3>
+            <select id="price" name="price">
+                <option value="$7">$7</option>
+                </select>
+                <br>
         <h3>Credit Card Number</h3>
-        <input type="text" class="cc-number" pattern="\d*" x-autocompletetype="cc-number" placeholder="4234-5678-9101-1121" pattern="[4]{1}[0-9]{3}-[0-9]{4}-[0-9]{4}-[0-9]{4}" maxlength="19" required>
+        <p>Please Match the format : Starting with a number 4 and having dashes every 4 numbers</p>
+        <input type="text" class="cc-number" placeholder="4234-5678-9101-1121" pattern="[4]{1}[0-9]{3}-[0-9]{4}-[0-9]{4}-[0-9]{4}" maxlength="19" required>
         <h3>Expiry Date</h3>
-        <input type="text" class="cc-exp" pattern="\d*" x-autocompletetype="cc-exp" placeholder="MM/20YY" pattern="[0-1]{1}[1-2]{1}/[2]{1}[0]{1}[1-9]{2}" maxlength="7" required>
+        <p>Please Match the format : Having a / after MM and Year must start with 20</p>
+        <input type="text" class="cc-exp" placeholder="MM/20YY" pattern="[0-1]{1}[0-9]{1}/[2]{1}[0]{1}[0-9]{2}" maxlength="7" required>
         <h3>CVC</h3>
-        <input type="text" class="cc-cvc" pattern="\d*" x-autocompletetype="cc-cvc" placeholder="123" pattern="[0-9]{3}" maxlength="3" required>
+        <input type="text" class="cc-cvc" placeholder="123" pattern="[0-9]{3}" maxlength="3" required>
         <br><br>
         <button type="submit">Submit</button>
       </form>
+
+      <br>
+    <div class="statusMessage"></div>
     
     </div>
     <hr>

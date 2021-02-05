@@ -5,17 +5,18 @@ $(document).ready(function(){
     })
     .done(
         function(data){
-            data.forEach(function(Carts){
+            // data.forEach(function(Cart){
             $(".cart").append(`
             <article>
             <div>
+            Movie Title : ${data.movietitle}<br>
             
-            Location : ${Carts.location}<br>
-            Time of Movie : ${Carts.time}<br>
-            Price of Movie : ${Carts.price}<br>
-            Quantity : ${Carts.quantity}<br>
+            Location : ${data.location}<br>
+            Time of Movie : ${data.time}<br>
+            Price of Movie : ${data.price}<br>
+            Quantity : ${data.quantity}<br>
             `);
-            })
+            // })
         }
     )
     .fail(
@@ -24,4 +25,3 @@ $(document).ready(function(){
         }
     )
 })
-// Movie Title : ${Carts.movietitle}<br>

@@ -222,6 +222,25 @@ var routes = function () {
 
     });
 
+    router.post('/ticket', function (req, res) {
+        var data = req.body;
+        console.log(data);
+        // var movieId = req.params._id;
+        // var userId = sessionStorage._id;
+        // var movieId = res.locals.movie._id;
+        // console.log(movieId);
+
+        db.addTicket(data.name, data.price, data.title, 
+            function (err, ticket) {
+                if (err) {
+                    res.status(500).send("Unable to buy");
+                } else {
+                    res.status(200).send("Successfully buy ticket");
+                }
+            })
+
+    });
+
 
     //checkout
     router.get('/checkout', function (req, res) {

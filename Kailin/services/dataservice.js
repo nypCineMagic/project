@@ -45,7 +45,7 @@ var database = {
                     name: String,
                     price: String,
                     title: String,
-                    description: String
+                    // description: String
                 });
 
                 cartSchema = schema({
@@ -65,7 +65,7 @@ var database = {
                 movieModel = connection.model('movies', movieSchema);
                 userModel = connection.model('users', userSchema);
                 ticketModel = connection.model('tickets', ticketSchema);
-                cartModel = connection.model('carts', cartSchema);
+                cartModel = connection.model('cart', cartSchema);
                 faqModel = connection.model('faqs', faqSchema);
             } else {
                 console.log("Error connecting to Mongo DB");
@@ -80,6 +80,16 @@ var database = {
     // get cart
     getCart: function (id, callback) {
         cartModel.findById(id,callback);
+    },
+    addTicket: function (n, p, t, callback) {
+        var newTicket = new ticketModel ({
+            name: n,
+            price: p,
+            title: t,
+            
+            
+        });
+        newTicket.save(callback);
     },
     //add to cart
     addCart: function (ti,l, t, p, q, callback) {
