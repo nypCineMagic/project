@@ -31,7 +31,7 @@ var routes = function () {
                     } else {
                         
                         // temp storage
-                        res.locals.movie = movie;
+                        // res.locals.movie = movie;
                         // res.locals.user = user;
                         //means proceed on with the request.
                         next();
