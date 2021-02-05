@@ -61,12 +61,19 @@ var database = {
                     inquiry: String
                 });
 
+                ticketSchema = schema({
+                    name: String,
+                    price: String,
+                    title: String
+                })
+
                 var connection = mongoose.connection;
                 movieModel = connection.model('movies', movieSchema);
                 userModel = connection.model('users', userSchema);
                 ticketModel = connection.model('tickets', ticketSchema);
                 cartModel = connection.model('cart', cartSchema);
                 faqModel = connection.model('faqs', faqSchema);
+                ticketModel = connection.model('tickets', ticketSchema);
             } else {
                 console.log("Error connecting to Mongo DB");
             }
