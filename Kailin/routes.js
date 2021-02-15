@@ -123,12 +123,16 @@ var routes = function () {
         });
     })
 
-    router.post('/tickets/delete', function (req, res) {
+    router.post('/tickets/delete', function (req, res, next) {
         var ticketId = req.body.ticketId || req.query.ticketId;
-        ticketSchema.remove({_id: ticketId}, function(err, res) {
-            if(err) {res.json({"err": err});} else {res.json({sucess: true});
-        }})
-    })
+        db.deleteTicket(ticketId, function(err) {
+            if(err) {
+                res.json({"err": err});
+            } else {
+                res.json({sucess: true});
+            }
+        });
+    });
 
     router.get('/css/*', function (req, res) {
         res.sendFile(__dirname + "/views/" + req.originalUrl);
