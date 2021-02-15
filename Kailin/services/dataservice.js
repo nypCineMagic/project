@@ -45,7 +45,6 @@ var database = {
                     name: String,
                     price: String,
                     title: String,
-                    // description: String
                 });
 
                 cartSchema = schema({
