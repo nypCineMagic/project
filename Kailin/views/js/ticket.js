@@ -3,6 +3,28 @@ $(document).ready(function () {
     var urlParams = new URLSearchParams(window.location.search);
     ticketId = urlParams.get('id');
 
+    attachButtons = function() {
+        $(".deleteTicketBtn").click(function() {
+            var ticketId = $(this).data('ticketid');
+            $.ajax(
+                {
+                    method: "POST",
+                    url: '/tickets/delete',
+                    data: {"ticketId": ticketId},
+                }
+            ).done(
+                function (data) {
+                    alert("Ticket deleted!");
+                    window.location.href = "/";
+                }
+            ).fail(
+                function (err) {
+                    console.log(err.responseText);
+                }
+            );
+        });
+    }
+
     $.ajax({
         url: "/tickets",
         method: "get"
@@ -18,10 +40,11 @@ $(document).ready(function () {
                             Price: ${ticket.price}<br>
                             Title: ${ticket.title}<br>
                         </div>
-                        <button class="deleteTicketBtn" ticket-id=${ticket.id}>Delete Ticket</button>
+                        <button class="deleteTicketBtn" data-ticketid=${ticket._id}>Delete Ticket</button>
                         </article>
                     `);
                 })
+                attachButtons()
             }
         )
         .fail(
@@ -29,24 +52,4 @@ $(document).ready(function () {
                 console.log(err.responseText);
             }
         )
-})
-
-$(".deleteTicketBtn").on('click', function(button) {
-    var ticketId = $(button).attr('ticket-id');
-    $.ajax(
-        {
-            method: "POST",
-            url: '/tickets/delete',
-            data: {"ticketId": ticketId},
-        }
-    ).done(
-        function (data) {
-            alert("Ticket deleted!");
-            window.location.href = "/";
-        }
-    ).fail(
-        function (err) {
-            console.log(err.responseText);
-        }
-    );
 });
