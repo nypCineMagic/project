@@ -1,0 +1,35 @@
+[{
+  "_id": {
+    "$oid": "5ffd2139808a209ed4196da0"
+  },
+  "name": "Test",
+  "password": "kailinpw",
+  "email": "kailin@email.com",
+  "number": "12345678",
+  "address": "blk 123 amk ave 8 #10-123",
+  "postalCode": "530677",
+  "__v": 0,
+  "token": "ad0422097f79e83b0423eaa94a24ebc7"
+},{
+  "_id": {
+    "$oid": "6000875c8792c29f54ce450a"
+  },
+  "name": "johnTan",
+  "password": "johnpw1",
+  "email": "john@email.com",
+  "number": "98766895",
+  "address": "blk 786 sembawang ave 10 #02-123",
+  "postalCode": "730786",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "601ce5252c7b2555d0fdb9fe"
+  },
+  "name": "test123",
+  "password": "test",
+  "email": "test@email.com",
+  "number": "12345678",
+  "address": "testing address",
+  "postalCode": "123456",
+  "__v": 0
+}]

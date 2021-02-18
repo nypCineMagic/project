@@ -1,0 +1,45 @@
+[{
+  "_id": {
+    "$oid": "5ffbcdc7155e282ba9bc2fd9"
+  },
+  "title": "Wonder Women 1984",
+  "genre": "Action / Adventure",
+  "language": "English",
+  "runningTime": "151 minutes",
+  "director": "Patty Jenkins",
+  "cast": "Gal Gadot, Chris Pine, Pedro Pascal, Connie Nielsen, Robin Wright, Kristen Wiig",
+  "description": "Fast forward to the 1980s as Wonder Woman’s next big screen adventure finds her facing two all-new foes: Max Lord and The Cheetah."
+},{
+  "_id": {
+    "$oid": "6000f71e912ab44a300da270"
+  },
+  "title": "The Promised Neverland",
+  "genre": "Fantasy/ Sci-Fi/ Thriller",
+  "language": "Japanese",
+  "runningTime": "119 minutes",
+  "director": "Yuichiro Hirakawa",
+  "cast": "Minami Hamabe, Kairi Jyo, Rihito Itagaki, Keiko Kitagawa, Naomi Watanabe",
+  "description": "The “forbidden” live-action film adaptation based on the extraordinarily suspenseful prison break manga that has sold over 21 million copies worldwide! Grace Field House is a paradisiacal orphanage filled with happiness, where the orphans who live there with their “Mother”, the caretaker, Isabella, all look forward to the day they grow old enough to be adopted. However, when Emma (Minami Hamabe), Ray (Kairi Jyo), and Norman (Rihito Itagaki), stumble upon the orphanage’s dark secret, they realise that everything was all but a fantasy, and set in motion their dangerous and desperate plan to break out of Grace Field House along with their other siblings."
+},{
+  "_id": {
+    "$oid": "6000f795912ab44a300da271"
+  },
+  "title": "The Croods: A New Age PG",
+  "genre": "Animation/ Adventure/ Comedy",
+  "language": "English",
+  "runningTime": "96 minutes",
+  "director": "Joel Crawford",
+  "cast": "Ryan Reynolds, Peter Dinklage, Emma Stone, Leslie Mann, Nicolas Cage",
+  "description": "The prehistoric family the Croods are challenged by a rival family the Bettermans, who claim to be better and more evolved."
+},{
+  "_id": {
+    "$oid": "6000f7eb912ab44a300da272"
+  },
+  "title": "The Rescue PG13",
+  "genre": "Action",
+  "language": "Mandarin",
+  "runningTime": "133 minutes",
+  "director": "Dante Lam",
+  "cast": "Xin Zhilei , Wang Yanlin , Eddie Peng",
+  "description": "A rescue unit within the Chinese Coast Guard are forced to overcome their personal differences to resolve a crisis."
+}]
