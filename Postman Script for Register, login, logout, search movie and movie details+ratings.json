@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "f8ff748a-7f58-47c9-8764-8b62741e8549",
+		"name": "login, register, logout, search movie, movie details+rating",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/register/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "postman",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "postman@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "number",
+							"value": "12345678",
+							"type": "text"
+						},
+						{
+							"key": "address",
+							"value": "address1234",
+							"type": "text"
+						},
+						{
+							"key": "postalCode",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/login/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "postman@gmail.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "postmantest",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "postmantest@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "number",
+							"value": "12345678",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "address123",
+							"disabled": true
+						},
+						{
+							"key": "postalCode",
+							"value": "123456",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/logout/",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "token",
+							"value": "d63183db2cd565719a11bbacef0940e7",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "postman@gmail.com",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/logout?token=d63183db2cd565719a11bbacef0940e7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"logout"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "postmantest",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "postmantest@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "number",
+							"value": "12345678",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "address123",
+							"disabled": true
+						},
+						{
+							"key": "postalCode",
+							"value": "123456",
+							"disabled": true
+						},
+						{
+							"key": "token",
+							"value": "d63183db2cd565719a11bbacef0940e7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/movies/title",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "postman@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "Promised",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/movies/title",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"movies",
+						"title"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "postmantest",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "postmantest@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "number",
+							"value": "12345678",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "address123",
+							"disabled": true
+						},
+						{
+							"key": "postalCode",
+							"value": "123456",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/movies/:id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "postman@gmail.com",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "title",
+							"value": "Promised",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/movie/6000f71e912ab44a300da270",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"movie",
+						"6000f71e912ab44a300da270"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "postmantest",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "postmantest@gmail.com",
+							"disabled": true
+						},
+						{
+							"key": "number",
+							"value": "12345678",
+							"disabled": true
+						},
+						{
+							"key": "address",
+							"value": "address123",
+							"disabled": true
+						},
+						{
+							"key": "postalCode",
+							"value": "123456",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
