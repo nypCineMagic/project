@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "f6944c07-f65f-4c3b-93c3-6748c59a1774",
+		"name": "project web2.0 - Kailin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cart",
+			"item": [
+				{
+					"name": "http://localhost:3000/cart",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "movietitle",
+									"value": "Wonder Women 1984",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "Funan",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "time",
+									"value": "7.50pm",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "quantity",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "$7",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "checkoutDate",
+									"value": "09-11-2020",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "token",
+									"value": "test",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cart"
+							]
+						},
+						"description": "Add To Cart"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/cart",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cart",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cart"
+							]
+						},
+						"description": "Get Cart"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "http://localhost:3000/user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "number",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "postalCode",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user"
+							]
+						},
+						"description": "update profile by token"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/user/5ffd2139808a209ed4196da0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/5ffd2139808a209ed4196da0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"5ffd2139808a209ed4196da0"
+							]
+						},
+						"description": "get profile by user id"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
